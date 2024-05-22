@@ -13,30 +13,29 @@ export default function App() {
   const url = import.meta.env.VITE_BACKEND_URL;
 
   useEffect(() => {
-    localStorage.setItem("WORDS", JSON.stringify(wordList));
-
     async function getWordsData() {
       try {
-        // const { data } = await axios.get(`${url}/allwords`);
-        // console.log("data: ", data);
+        const { data } = await axios.get(`${url}/allwords`);
+        const words = data.words;
+        if (words.length) {
+          localStorage.setItem("WORDS", JSON.stringify(words));
+          setWordList(words);
+        }
       } catch (err) {
         console.log("msg: ", err);
       }
     }
 
     getWordsData();
-  }, [wordList]);
+  }, []);
 
   async function addWord(newWord) {
-    console.log("new word: ", newWord);
-
     try {
       const addNewWord = await axios.post(`${url}/new`, {
         newWord: newWord,
       });
 
       const data = addNewWord.data;
-      console.log(data);
       if (data.newWordAdded) {
         const newWord = { id: data.id, word: data.newWord, mastered: false };
 
