@@ -1,10 +1,9 @@
-import react from "react";
 import { useState, useEffect } from "react";
 import { NewWordForm } from "./NewWordForm";
 import { WordList } from "./WordList";
 import axios from "axios";
 
-export default function App() {
+export default function New() {
   // const [wordList, setWordList] = useState(() => {
   //   const localValue = localStorage.getItem("WORDS");
   //   if (localValue === null) return [];
