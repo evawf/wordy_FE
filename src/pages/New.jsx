@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { NewWordForm } from "./NewWordForm";
-import { WordList } from "./WordList";
+import { NewWordForm } from "../components/NewWordForm";
+import { WordList } from "../components/WordList";
 import axios from "axios";
 
 export default function New() {
@@ -11,7 +11,6 @@ export default function New() {
   // });
 
   const [wordList, setWordList] = useState([]);
-
   const url = import.meta.env.VITE_BACKEND_URL;
 
   useEffect(() => {
@@ -42,7 +41,8 @@ export default function New() {
         const newWord = { id: data.id, word: data.newWord, is_mastered: false };
 
         setWordList((currentWordList) => {
-          return [...currentWordList, newWord];
+          // return [...currentWordList, newWord];
+          return [newWord, ...currentWordList];
         });
       }
 
