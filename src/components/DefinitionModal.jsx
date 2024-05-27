@@ -10,17 +10,22 @@ import { styled } from "@mui/joy/styles";
 import Grid from "@mui/joy/Grid";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import { AudioPlayer } from "react-audio-play";
+import uuid from "node-uuid";
 
-export default function DefinitionModal({ word, definition, open, setOpen }) {
+export default function DefinitionModal({
+  word,
+  definition,
+  open,
+  setOpen,
+  audioLink,
+}) {
   var generateKey = () => {
     return crypto.randomUUID();
   };
 
-  const [audioLink, setAudioLink] = useState("");
-
   const Item = styled(Sheet)(({ theme }) => ({
     backgroundColor:
-      theme.palette.mode === "dark" ? theme.palette.background.level1 : "#fff",
+      theme.palette.mode === "dark" ? theme.palette.background.level1 : "none",
     ...theme.typography["body-sm"],
     padding: theme.spacing(0),
     textAlign: "left",
@@ -44,8 +49,8 @@ export default function DefinitionModal({ word, definition, open, setOpen }) {
       <Sheet
         variant="outlined"
         sx={{
-          maxWidth: 500,
-          maxHeight: 1000,
+          maxWidth: 350,
+          maxHeight: 700,
           borderRadius: "md",
           p: 3,
           boxShadow: "lg",
@@ -76,57 +81,51 @@ export default function DefinitionModal({ word, definition, open, setOpen }) {
           />
         )}
 
-        <List id="modal-desc">
-          {definition.map((d) => {
-            return (
-              <>
-                <ListItem
-                  key={generateKey()}
-                  color="primary"
-                  sx={{ padding: 0 }}
-                >
-                  {d.title}
-                </ListItem>
-                <Divider></Divider>
-                <Grid container sx={{ flexGrow: 0, overflow: "auto" }}>
-                  <Grid>
-                    <Item key={generateKey()}>
-                      {d.translations.map((w) => {
-                        return (
-                          <>
-                            <Item key={generateKey()} sx={{ pt: 1, pb: 0 }}>
-                              <FiberManualRecordIcon
-                                sx={{ fontSize: 6 }}
-                              ></FiberManualRecordIcon>{" "}
-                              {}
-                              <strong>{w.word.word}</strong> {w.word.pos}. {"("}
-                              {w.definition}
-                              {")"}
-                            </Item>
+        {definition.map((d) => {
+          return (
+            <List id="modal-desc" key={uuid()}>
+              <ListItem color="primary" sx={{ padding: 0 }}>
+                {d.title}
+              </ListItem>
+              <Divider></Divider>
+              <Grid container sx={{ flexGrow: 0, overflow: "auto" }}>
+                <Grid>
+                  <Item>
+                    {d.translations.map((w) => {
+                      return (
+                        <Item key={generateKey()}>
+                          <Item sx={{ pt: 1, pb: 0 }}>
+                            <FiberManualRecordIcon
+                              sx={{ fontSize: 6 }}
+                            ></FiberManualRecordIcon>{" "}
+                            {}
+                            <strong>{w.word.word}</strong> {w.word.pos}. {"("}
+                            {w.definition}
+                            {")"}
+                          </Item>
 
-                            <Item sx={{ pt: 0, pb: 2 }}>
-                              {w.examples.map((e) => {
-                                return (
-                                  <Item key={generateKey()}>- {e.phrase}</Item>
-                                );
-                              })}
-                            </Item>
-                          </>
-                        );
-                      })}
-                    </Item>
-                  </Grid>
-                  {/* <Grid xs={6}>
+                          <Item sx={{ pt: 0, pb: 2 }}>
+                            {w.examples.map((e) => {
+                              return (
+                                <Item key={generateKey()}>- {e.phrase}</Item>
+                              );
+                            })}
+                          </Item>
+                        </Item>
+                      );
+                    })}
+                  </Item>
+                </Grid>
+                {/* <Grid xs={6}>
                       <Item>xs=6</Item>
                     </Grid>
                     <Grid xs>
                       <Item>xs</Item>
                     </Grid> */}
-                </Grid>
-              </>
-            );
-          })}
-        </List>
+              </Grid>
+            </List>
+          );
+        })}
       </Sheet>
     </Modal>
   );

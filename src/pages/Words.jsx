@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Cards } from "../components/Cards";
+import { WordCards } from "../components/WordCards";
 import axios from "axios";
 
 export default function Words() {
@@ -52,8 +52,8 @@ export default function Words() {
   console.log("words: ", words);
   return (
     <>
-      <h1>This is words page, review random words: 1-10</h1>
-      <Cards
+      <h1>Today's Words</h1>
+      <WordCards
         words={words}
         toggleWordState={toggleWordState}
         deleteWord={deleteWord}

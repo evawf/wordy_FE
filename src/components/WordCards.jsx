@@ -1,12 +1,14 @@
-import { Card } from "./Card";
+import { SingleWordCard } from "./SingleWordCard";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
 
-export function Cards({ words, toggleWordState, deleteWord }) {
+export function WordCards({ words, toggleWordState, deleteWord }) {
   return (
-    <ul className="list">
+    <List className="list">
       {words.length === 0 && "No word to show"}
       {words.map((word) => {
         return (
-          <Card
+          <SingleWordCard
             {...word}
             key={word.id}
             toggleWordState={toggleWordState}
@@ -14,6 +16,6 @@ export function Cards({ words, toggleWordState, deleteWord }) {
           />
         );
       })}
-    </ul>
+    </List>
   );
 }
