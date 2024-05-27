@@ -6,7 +6,7 @@ export function WordCard({
   deleteWord,
 }) {
   return (
-    <li>
+    <li key={id}>
       {/* <label htmlFor="wordState"> */}
       <label>
         <input
