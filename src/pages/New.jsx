@@ -2,6 +2,9 @@ import { useState, useEffect } from "react";
 import { NewWordForm } from "../components/NewWordForm";
 import { WordList } from "../components/WordList";
 import axios from "axios";
+import BottomNav from "../components/BottomNav";
+import Box from "@mui/material/Box";
+import { defineWord } from "wordreference";
 
 export default function New() {
   // const [wordList, setWordList] = useState(() => {
@@ -32,8 +35,15 @@ export default function New() {
 
   async function addWord(newWord) {
     try {
+      // API Call wordreference to get autolink and definition
+      const getDefinition = await defineWord(newWord, "French-English");
+      const audio = getDefinition.audioLinks[0];
+      const definition = getDefinition.sections;
+
       const addNewWord = await axios.post(`${url}/new`, {
         newWord: newWord.trim(),
+        audio: audio,
+        definition: definition,
       });
 
       const data = addNewWord.data;
@@ -89,7 +99,9 @@ export default function New() {
   }
 
   return (
-    <>
+    <Box
+      sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+    >
       <NewWordForm onSubmit={addWord} />
       <h1 className="header">New words added: </h1>
       <p>Check the box if you have mastered the word.</p>
@@ -98,6 +110,7 @@ export default function New() {
         toggleWordState={toggleWordState}
         deleteWord={deleteWord}
       />
-    </>
+      <BottomNav />
+    </Box>
   );
 }

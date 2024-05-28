@@ -4,7 +4,7 @@ import ListItem from "@mui/material/ListItem";
 
 export function WordCards({ words, toggleWordState, deleteWord }) {
   return (
-    <List className="list">
+    <List className="list" sx={{ width: "100%", top: 15 }}>
       {words.length === 0 && "No word to show"}
       {words.map((word) => {
         return (

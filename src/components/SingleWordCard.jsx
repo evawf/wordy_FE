@@ -10,12 +10,11 @@ import Typography from "@mui/material/Typography";
 import Checkbox from "@mui/material/Checkbox";
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
 import Favorite from "@mui/icons-material/Favorite";
-import { CardActionArea } from "@mui/material";
 
 import DeleteIcon from "@mui/icons-material/Delete";
-import SendIcon from "@mui/icons-material/Send";
-import Stack from "@mui/material/Stack";
 import VisibilityIcon from "@mui/icons-material/Visibility";
+
+import axios from "axios";
 
 export function SingleWordCard({
   is_mastered,
@@ -25,6 +24,7 @@ export function SingleWordCard({
   deleteWord,
 }) {
   const label = { inputProps: { "aria-label": "Checkbox heart" } };
+  const url = import.meta.env.VITE_BACKEND_URL;
 
   const generateKey = () => {
     return crypto.randomUUID();
@@ -35,10 +35,18 @@ export function SingleWordCard({
   const [open, setOpen] = useState(false);
 
   async function showDefinition() {
-    const getDefinition = await defineWord(word, "French-English");
-    console.log(getDefinition);
-    setDefinition(getDefinition.sections);
-    setAudioLink(getDefinition.audioLinks[0]);
+    // Get definition from wordreference
+    // const getDefinition = await defineWord(word, "French-English");
+    // console.log(getDefinition);
+    // setDefinition(getDefinition.sections);
+    // setAudioLink(getDefinition.audioLinks[0]);
+
+    // Get definition from DB
+    console.log("word: ", word);
+    const { data } = await axios.get(`${url}/${word}/definition`);
+    console.log("data: ", data, "def: ", data.definition);
+    setAudioLink(data.audio);
+    setDefinition(data.definition);
   }
 
   return (

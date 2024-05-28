@@ -13,7 +13,11 @@ export function NewWordForm({ onSubmit }) {
 
   return (
     <>
-      <form onSubmit={handleSubmit} className="new-word-form">
+      <form
+        onSubmit={handleSubmit}
+        className="new-word-form"
+        sx={{ width: "100%" }}
+      >
         <div className="form-row">
           <label htmlFor="">+ New word</label>
           <input

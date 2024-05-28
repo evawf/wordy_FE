@@ -1,8 +1,9 @@
 import { WordCard } from "./WordCard";
+import List from "@mui/material/List";
 
 export function WordList({ wordList, toggleWordState, deleteWord }) {
   return (
-    <ul className="list">
+    <List className="list" sx={{ width: "100%", top: 15 }}>
       {wordList.length === 0 && "No word to show"}
       {wordList.map((word) => {
         return (
@@ -14,6 +15,6 @@ export function WordList({ wordList, toggleWordState, deleteWord }) {
           />
         );
       })}
-    </ul>
+    </List>
   );
 }
