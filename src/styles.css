@@ -140,3 +140,14 @@ body {
 .list li:has(input:checked) label:hover::before {
   background: hsl(200, 100%, 30%);
 }
+
+.addNewWordBtn {
+  width: 40px;
+  height: 40px;
+  border-radius: 0 10px 10px 0;
+}
+
+.listHead {
+  background-color: none;
+  border: none;
+}

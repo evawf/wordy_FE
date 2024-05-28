@@ -5,6 +5,8 @@ import axios from "axios";
 import BottomNav from "../components/BottomNav";
 import Box from "@mui/material/Box";
 import { defineWord } from "wordreference";
+import Divider from "@mui/material/Divider";
+import Button from "@mui/joy/Button";
 
 export default function New() {
   // const [wordList, setWordList] = useState(() => {
@@ -39,6 +41,7 @@ export default function New() {
       const getDefinition = await defineWord(newWord, "French-English");
       const audio = getDefinition.audioLinks[0];
       const definition = getDefinition.sections;
+      console.log("new word - def: ", definition);
 
       const addNewWord = await axios.post(`${url}/new`, {
         newWord: newWord.trim(),
@@ -100,11 +103,35 @@ export default function New() {
 
   return (
     <Box
-      sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        mx: 5,
+      }}
     >
+      <h1>+ New Word</h1>
       <NewWordForm onSubmit={addWord} />
-      <h1 className="header">New words added: </h1>
-      <p>Check the box if you have mastered the word.</p>
+      {/* <h1 className="header">Words</h1> */}
+      {/* <p style={{ marginBottom: "10px" }}>
+        Check the box if you have mastered the word.
+      </p> */}
+
+      <Box
+        sx={{
+          width: "100%",
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "space-between",
+          my: 0.5,
+        }}
+      >
+        <Box>Mastered</Box>
+        <Box>Word</Box>
+        <Box>Remove</Box>
+      </Box>
+      <Divider sx={{ border: "0.5px solid gray", width: "100%" }} />
+
       <WordList
         wordList={wordList}
         toggleWordState={toggleWordState}

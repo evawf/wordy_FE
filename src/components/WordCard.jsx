@@ -1,3 +1,6 @@
+import Button from "@mui/material/Button";
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
+
 export function WordCard({
   is_mastered,
   id,
@@ -6,20 +9,41 @@ export function WordCard({
   deleteWord,
 }) {
   return (
-    <li key={id}>
+    <li
+      key={id}
+      style={{
+        width: "100%",
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "space-between",
+      }}
+    >
       {/* <label htmlFor="wordState"> */}
-      <label>
+      <label
+        style={{
+          width: "100%",
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "space-between",
+          paddingLeft: "20px",
+        }}
+      >
         <input
           // id="wordState"
           type="checkbox"
           checked={is_mastered}
           onChange={(e) => toggleWordState(id, e.target.checked)}
         />
-        {word}
+        <p style={{ width: "100px" }}>{word}</p>
       </label>
-      <button className="btn btn-danger" onClick={() => deleteWord(id)}>
-        Remove
-      </button>
+      <Button
+        size="small"
+        color="error"
+        variant="text"
+        onClick={() => deleteWord(id)}
+      >
+        <DeleteForeverIcon />
+      </Button>
     </li>
   );
 }

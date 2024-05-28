@@ -13,6 +13,7 @@ import Favorite from "@mui/icons-material/Favorite";
 
 import DeleteIcon from "@mui/icons-material/Delete";
 import VisibilityIcon from "@mui/icons-material/Visibility";
+import Stack from "@mui/material/Stack";
 
 import axios from "axios";
 
@@ -35,24 +36,52 @@ export function SingleWordCard({
   const [open, setOpen] = useState(false);
 
   async function showDefinition() {
-    // Get definition from wordreference
-    // const getDefinition = await defineWord(word, "French-English");
-    // console.log(getDefinition);
-    // setDefinition(getDefinition.sections);
-    // setAudioLink(getDefinition.audioLinks[0]);
+    //test
+    const getDefinition = await defineWord(word, "French-English");
+    console.log(
+      "word reference: ",
+      getDefinition,
+      "\n",
+      "definition sections: ",
+      getDefinition.sections
+    );
 
     // Get definition from DB
-    console.log("word: ", word);
     const { data } = await axios.get(`${url}/${word}/definition`);
-    console.log("data: ", data, "def: ", data.definition);
-    setAudioLink(data.audio);
-    setDefinition(data.definition);
+    if (data.msg !== "failed") {
+      setAudioLink(data.audio);
+      setDefinition(data.definition);
+    } else {
+      // Get definition from wordreference
+      const getDefinition = await defineWord(word, "French-English");
+      console.log("word reference: ", getDefinition);
+      setDefinition(getDefinition.sections);
+      setAudioLink(getDefinition.audioLinks[0]);
+      const audio = getDefinition.audioLinks[0];
+      const definition = getDefinition.sections;
+      console.log("def to db: ", definition);
+
+      // update DB
+      const addNewWord = await axios.put(`${url}/definition/update`, {
+        audio: audio,
+        definition: definition,
+        word: word,
+      });
+    }
   }
 
   return (
     <Card
       key={generateKey()}
-      sx={{ height: "130px", width: "auto", m: 0, p: 0 }}
+      sx={{
+        height: "130px",
+        width: "auto",
+        m: 0,
+        p: 0,
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+      }}
     >
       {/********************** Modal **********************/}
       <DefinitionModal
@@ -88,35 +117,30 @@ export function SingleWordCard({
           display: "flex",
           flexDirection: "row",
           justifyContent: "space-around",
+          backgroundColor: "lightBlue",
+          height: "40px",
         }}
       >
-        {/* <Stack direction="row" spacing={4}> */}
         <Button
           size="sm"
-          color="primary"
-          variant="outlined"
+          variant="text"
           onClick={() => {
             setOpen(true);
             showDefinition();
           }}
           sx={{ width: "100px" }}
         >
-          <VisibilityIcon />
-          {}
-          View
+          <VisibilityIcon color="primary" />
         </Button>
         <Button
           size="sm"
           color="danger"
           onClick={() => deleteWord(id)}
-          variant="outlined"
+          variant="text"
           sx={{ width: "100px" }}
         >
-          <DeleteIcon />
-          {}
-          Remove
+          <DeleteIcon color="error" />
         </Button>
-        {/* </Stack> */}
       </CardActions>
       {/* </CardActionArea> */}
     </Card>
