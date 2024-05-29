@@ -19,7 +19,7 @@ export default function Home() {
     <Box
       sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
     >
-      <h1>Welcome to homepage!</h1>
+      <h2>Homepage</h2>
       <BottomNav />
     </Box>
   );

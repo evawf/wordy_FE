@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Box from "@mui/material/Box";
 import Input from "@mui/joy/Input";
+import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 
 export function NewWordForm({ onSubmit }) {
   const [newWord, setNewWord] = useState("");
@@ -42,7 +43,7 @@ export function NewWordForm({ onSubmit }) {
             sx={{ height: "40px", borderRadius: "10px 0 0 10px" }}
           />
           <button className="btn addNewWordBtn" variant="outlined">
-            Add
+            <AddCircleOutlineIcon />
           </button>
         </Box>
       </form>

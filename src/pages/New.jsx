@@ -41,7 +41,6 @@ export default function New() {
       const getDefinition = await defineWord(newWord, "French-English");
       const audio = getDefinition.audioLinks[0];
       const definition = getDefinition.sections;
-      console.log("new word - def: ", definition);
 
       const addNewWord = await axios.post(`${url}/new`, {
         newWord: newWord.trim(),
@@ -79,8 +78,6 @@ export default function New() {
       const updateWordStatus = await axios.put(`${url}/word/${id}/update`, {
         is_mastered: is_mastered,
       });
-
-      console.log(updateWordStatus.data);
     } catch (err) {
       console.log("msg: ", err);
     }
@@ -93,7 +90,6 @@ export default function New() {
 
     try {
       const deleteWord = await axios.delete(`${url}/word/${id}/delete`);
-      console.log(deleteWord.data);
     } catch (err) {
       console.log("msg: ", err);
     }

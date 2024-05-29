@@ -11,7 +11,6 @@ export default function Words() {
   useEffect(() => {
     async function getRandomWords() {
       const getWords = await axios.get(`${url}/words`);
-
       setWords(getWords.data.words);
     }
     getRandomWords();
@@ -31,8 +30,6 @@ export default function Words() {
       const updateWordStatus = await axios.put(`${url}/word/${id}/update`, {
         is_mastered: is_mastered,
       });
-
-      console.log(updateWordStatus.data);
     } catch (err) {
       console.log("msg: ", err);
     }
@@ -45,7 +42,6 @@ export default function Words() {
 
     try {
       const deleteWord = await axios.delete(`${url}/word/${id}/delete`);
-      console.log(deleteWord.data);
     } catch (err) {
       console.log("msg: ", err);
     }
