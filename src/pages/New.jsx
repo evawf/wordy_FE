@@ -65,8 +65,6 @@ export default function New() {
     }
   }
 
-  console.log("word list2: ", wordList);
-
   async function toggleWordState(id, is_mastered) {
     setWordList((currentWordList) => {
       return currentWordList.map((word) => {
@@ -104,6 +102,7 @@ export default function New() {
   return (
     <Box
       sx={{
+        height: "100%",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -112,11 +111,6 @@ export default function New() {
     >
       <h1>+ New Word</h1>
       <NewWordForm onSubmit={addWord} />
-      {/* <h1 className="header">Words</h1> */}
-      {/* <p style={{ marginBottom: "10px" }}>
-        Check the box if you have mastered the word.
-      </p> */}
-
       <Box
         sx={{
           width: "100%",
@@ -137,6 +131,7 @@ export default function New() {
         toggleWordState={toggleWordState}
         deleteWord={deleteWord}
       />
+
       <BottomNav />
     </Box>
   );

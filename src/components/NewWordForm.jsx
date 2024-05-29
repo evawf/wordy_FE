@@ -1,9 +1,6 @@
 import { useState } from "react";
 import Box from "@mui/material/Box";
-import FormControl from "@mui/material/FormControl";
-import Button from "@mui/joy/Button";
 import Input from "@mui/joy/Input";
-import InputLabel from "@mui/material/InputLabel";
 
 export function NewWordForm({ onSubmit }) {
   const [newWord, setNewWord] = useState("");
@@ -23,7 +20,7 @@ export function NewWordForm({ onSubmit }) {
         flexDirection: "column",
         alignItems: "center",
         width: "100%",
-        my: 5,
+        my: 2,
       }}
     >
       {/* <Box>+ New word</Box> */}

@@ -13,13 +13,17 @@ export default function BottomNav() {
   return (
     <Box
       sx={{
-        width: "80%",
+        width: "100%",
+        height: "50px",
         display: "flex",
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",
         position: "fixed",
-        bottom: 20,
+        bottom: 0,
+        backgroundColor: "white",
+        paddingLeft: "20px",
+        paddingRight: "20px",
       }}
     >
       <Link

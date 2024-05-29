@@ -51,7 +51,6 @@ export default function Words() {
     }
   }
 
-  console.log("words: ", words);
   return (
     <Box
       sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}

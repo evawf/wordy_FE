@@ -2,6 +2,7 @@ import { defineWord } from "wordreference";
 import { useState } from "react";
 import Button from "@mui/joy/Button";
 import DefinitionModal from "./DefinitionModal";
+import EditWordModal from "./EditWordModal";
 
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
@@ -12,8 +13,8 @@ import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
 import Favorite from "@mui/icons-material/Favorite";
 
 import DeleteIcon from "@mui/icons-material/Delete";
+import EditNoteIcon from "@mui/icons-material/EditNote";
 import VisibilityIcon from "@mui/icons-material/Visibility";
-import Stack from "@mui/material/Stack";
 
 import axios from "axios";
 
@@ -34,18 +35,9 @@ export function SingleWordCard({
   const [definition, setDefinition] = useState([]);
   const [audioLink, setAudioLink] = useState("");
   const [open, setOpen] = useState(false);
+  const [openEdit, setOpenEdit] = useState(false);
 
   async function showDefinition() {
-    //test
-    const getDefinition = await defineWord(word, "French-English");
-    console.log(
-      "word reference: ",
-      getDefinition,
-      "\n",
-      "definition sections: ",
-      getDefinition.sections
-    );
-
     // Get definition from DB
     const { data } = await axios.get(`${url}/${word}/definition`);
     if (data.msg !== "failed") {
@@ -54,12 +46,10 @@ export function SingleWordCard({
     } else {
       // Get definition from wordreference
       const getDefinition = await defineWord(word, "French-English");
-      console.log("word reference: ", getDefinition);
       setDefinition(getDefinition.sections);
       setAudioLink(getDefinition.audioLinks[0]);
       const audio = getDefinition.audioLinks[0];
       const definition = getDefinition.sections;
-      console.log("def to db: ", definition);
 
       // update DB
       const addNewWord = await axios.put(`${url}/definition/update`, {
@@ -76,6 +66,7 @@ export function SingleWordCard({
       sx={{
         height: "130px",
         width: "auto",
+        borderRadius: "10px",
         m: 0,
         p: 0,
         display: "flex",
@@ -83,15 +74,23 @@ export function SingleWordCard({
         justifyContent: "space-between",
       }}
     >
-      {/********************** Modal **********************/}
+      {/********************** Definition Modal **********************/}
       <DefinitionModal
-        definition={definition}
         word={word}
         open={open}
         setOpen={setOpen}
         audioLink={audioLink}
+        definition={definition}
       />
-      {/* <CardActionArea> */}
+
+      {/********************** Edit Word Modal **********************/}
+      <EditWordModal
+        id={id}
+        word={word}
+        openEdit={openEdit}
+        setOpenEdit={setOpenEdit}
+      />
+
       <CardContent
         sx={{
           display: "flex",
@@ -124,25 +123,35 @@ export function SingleWordCard({
         <Button
           size="sm"
           variant="text"
+          sx={{ width: "100px" }}
           onClick={() => {
             setOpen(true);
             showDefinition();
           }}
-          sx={{ width: "100px" }}
         >
           <VisibilityIcon color="primary" />
+        </Button>
+
+        <Button
+          size="sm"
+          variant="text"
+          sx={{ width: "100px" }}
+          onClick={() => {
+            setOpenEdit(true);
+          }}
+        >
+          <EditNoteIcon color="secondary" />
         </Button>
         <Button
           size="sm"
           color="danger"
-          onClick={() => deleteWord(id)}
           variant="text"
           sx={{ width: "100px" }}
+          onClick={() => deleteWord(id)}
         >
           <DeleteIcon color="error" />
         </Button>
       </CardActions>
-      {/* </CardActionArea> */}
     </Card>
   );
 }

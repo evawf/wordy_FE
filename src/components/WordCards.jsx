@@ -1,11 +1,11 @@
 import { SingleWordCard } from "./SingleWordCard";
 import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
 
 export function WordCards({ words, toggleWordState, deleteWord }) {
   return (
-    <List className="list" sx={{ width: "100%", top: 15 }}>
-      {words.length === 0 && "No word to show"}
+    <List className="list" sx={{ width: "98%", top: 15, overflow: "auto" }}>
+      {words.length === 0 &&
+        "You haven't added any word or something went wront."}
       {words.map((word) => {
         return (
           <SingleWordCard
