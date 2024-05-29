@@ -116,7 +116,7 @@ export function SingleWordCard({
           display: "flex",
           flexDirection: "row",
           justifyContent: "space-around",
-          backgroundColor: "lightBlue",
+          backgroundColor: "#d9d8d4",
           height: "40px",
         }}
       >

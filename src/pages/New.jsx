@@ -6,7 +6,7 @@ import BottomNav from "../components/BottomNav";
 import Box from "@mui/material/Box";
 import { defineWord } from "wordreference";
 import Divider from "@mui/material/Divider";
-import Button from "@mui/joy/Button";
+import Loader from "../components/Loader";
 
 export default function New() {
   // const [wordList, setWordList] = useState(() => {
@@ -15,6 +15,7 @@ export default function New() {
   //   return JSON.parse(localValue);
   // });
 
+  const [isDataLoading, setIsDataLoading] = useState(false);
   const [wordList, setWordList] = useState([]);
   const url = import.meta.env.VITE_BACKEND_URL;
 
@@ -38,6 +39,8 @@ export default function New() {
   async function addWord(newWord) {
     try {
       // API Call wordreference to get autolink and definition
+      setIsDataLoading(true);
+
       const getDefinition = await defineWord(newWord, "French-English");
       const audio = getDefinition.audioLinks[0];
       const definition = getDefinition.sections;
@@ -59,6 +62,7 @@ export default function New() {
       }
 
       if (data.isExistingWord) alert("Word already added!");
+      setIsDataLoading(false);
     } catch (err) {
       console.log("msg: ", err);
     }
@@ -121,7 +125,11 @@ export default function New() {
         <Box>Remove</Box>
       </Box>
       <Divider sx={{ border: "0.5px solid gray", width: "100%" }} />
-
+      {isDataLoading ? (
+        <Loader style={{ position: "absolute", zIndex: "-1" }} />
+      ) : (
+        <></>
+      )}
       <WordList
         wordList={wordList}
         toggleWordState={toggleWordState}

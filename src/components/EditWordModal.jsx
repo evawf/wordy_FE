@@ -57,9 +57,10 @@ export default function EditWordModal({ id, word, openEdit, setOpenEdit }) {
           level="h4"
           textColor="inherit"
           fontWeight="lg"
+          textAlign={"center"}
           mb={1}
         >
-          {word}
+          Edit Word
         </Typography>
         <form
           onSubmit={handleEditWord}
