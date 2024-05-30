@@ -95,21 +95,23 @@ export function SingleWordCard({
         sx={{
           display: "flex",
           flexDirection: "row",
-          justifyContent: "space-around",
+          justifyContent: "center",
+          alignContent: "center",
+          width: "100%",
         }}
       >
-        <Typography variant="h5" component="div" sx={{ width: "100px" }}>
-          {word}
+        <Typography
+          variant="h5"
+          component="div"
+          color={is_mastered ? "green" : "none"}
+          sx={{
+            width: "100%",
+            marginTop: "10px",
+            textAlign: "center",
+          }}
+        >
+          <strong>{word}</strong>
         </Typography>
-        <Checkbox
-          // type="checkbox"
-          sx={{ pt: 0.6 }}
-          icon={<FavoriteBorder />}
-          checkedIcon={<Favorite />}
-          {...label}
-          checked={is_mastered}
-          onChange={(e) => toggleWordState(id, e.target.checked)}
-        />
       </CardContent>
       <CardActions
         sx={{
@@ -122,6 +124,23 @@ export function SingleWordCard({
       >
         <Button
           size="sm"
+          color="danger"
+          variant="text"
+          sx={{ width: "100px" }}
+          onClick={() => deleteWord(id)}
+        >
+          <DeleteIcon color="error" />
+        </Button>
+        <Checkbox
+          type="checkbox"
+          // icon={<FavoriteBorder />}
+          // checkedIcon={<Favorite />}
+          {...label}
+          checked={is_mastered}
+          onChange={(e) => toggleWordState(id, e.target.checked)}
+        />
+        <Button
+          size="sm"
           variant="text"
           sx={{ width: "100px" }}
           onClick={() => {
@@ -132,7 +151,7 @@ export function SingleWordCard({
           <VisibilityIcon color="primary" />
         </Button>
 
-        <Button
+        {/* <Button
           size="sm"
           variant="text"
           sx={{ width: "100px" }}
@@ -141,16 +160,7 @@ export function SingleWordCard({
           }}
         >
           <EditNoteIcon color="secondary" />
-        </Button>
-        <Button
-          size="sm"
-          color="danger"
-          variant="text"
-          sx={{ width: "100px" }}
-          onClick={() => deleteWord(id)}
-        >
-          <DeleteIcon color="error" />
-        </Button>
+        </Button> */}
       </CardActions>
     </Card>
   );

@@ -122,14 +122,10 @@ export default function New() {
       >
         <Box>Mastered</Box>
         <Box>Word</Box>
-        <Box>Remove</Box>
+        <Box>Update</Box>
       </Box>
       <Divider sx={{ border: "0.5px solid gray", width: "100%" }} />
-      {isDataLoading ? (
-        <Loader style={{ position: "absolute", zIndex: "-1" }} />
-      ) : (
-        <></>
-      )}
+      {isDataLoading ? <Loader /> : <></>}
       <WordList
         wordList={wordList}
         toggleWordState={toggleWordState}

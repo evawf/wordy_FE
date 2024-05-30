@@ -20,6 +20,8 @@ export default function Home() {
       sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
     >
       <h2>Homepage</h2>
+      <Link href="/words">Words of the day</Link>
+      <Link href="/new">Add new words</Link>
       <BottomNav />
     </Box>
   );
