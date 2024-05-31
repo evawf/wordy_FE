@@ -16,7 +16,7 @@ export default function BottomNav() {
         alignItems: "center",
         position: "fixed",
         bottom: 0,
-        backgroundColor: "white",
+        backgroundColor: "lightGray",
         paddingLeft: "20px",
         paddingRight: "20px",
       }}
