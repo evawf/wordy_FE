@@ -10,6 +10,7 @@ import Grid from "@mui/joy/Grid";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import { AudioPlayer } from "react-audio-play";
 import uuid from "node-uuid";
+import Link from "@mui/material/Link";
 
 export default function DefinitionModal({
   word,
@@ -78,6 +79,22 @@ export default function DefinitionModal({
               padding: "30px",
             }}
           />
+        )}
+
+        {!definition.length && (
+          <>
+            <Divider />
+            <p style={{ color: "gray", textAlign: "center", width: "100%" }}>
+              Definition not found
+            </p>
+            <Link
+              href="https://translate.google.com/details?sl=fr&tl=en&text=triska%C3%AFdekaphobie%0A&op=translate"
+              target="_blank"
+              sx={{ textAlign: "center" }}
+            >
+              Check at Google
+            </Link>
+          </>
         )}
 
         {definition.map((d) => {

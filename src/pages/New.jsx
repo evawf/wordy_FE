@@ -106,7 +106,7 @@ export default function New() {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        mx: 5,
+        mx: 4,
       }}
     >
       <h1>+ New Word</h1>
@@ -116,13 +116,13 @@ export default function New() {
           width: "100%",
           display: "flex",
           flexDirection: "row",
-          justifyContent: "space-between",
+          justifyContent: "center",
           my: 0.5,
         }}
       >
-        <Box>Mastered</Box>
+        {/* <Box>Mastered</Box> */}
         <Box>Word</Box>
-        <Box>Update</Box>
+        {/* <Box>Update</Box> */}
       </Box>
       <Divider sx={{ border: "0.5px solid gray", width: "100%" }} />
       {isDataLoading ? <Loader /> : <></>}

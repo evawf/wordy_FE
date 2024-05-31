@@ -29,45 +29,49 @@ export function WordCard({
           width: "100%",
           display: "flex",
           flexDirection: "row",
-          justifyContent: "space-between",
+          justifyContent: "center",
           alignItems: "center",
         }}
       >
         {/* <label htmlFor="wordState"> */}
         <label
-          style={{
-            width: "100%",
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-between",
-          }}
+          style={
+            {
+              // width: "100%",
+              // display: "flex",
+              // flexDirection: "row",
+              // justifyContent: "space-around",
+              // overflow: "auto",
+              // marginLeft: "20px",
+            }
+          }
         >
           <input
             // id="wordState"
             type="checkbox"
             checked={is_mastered}
-            onChange={(e) => toggleWordState(id, e.target.checked)}
+            // onChange={(e) => toggleWordState(id, e.target.checked)}
           />
-          <p style={{ width: "100px" }}>{word}</p>
         </label>
+        <p style={{ width: "100%", overflow: "auto" }}>{word}</p>
         <Button
-          size="sm"
           variant="text"
-          sx={{ width: "100px", paddingLeft: "15px" }}
+          size="small"
           onClick={() => {
             setOpenEdit(true);
           }}
         >
           <EditNoteIcon color="secondary" />
         </Button>
-        {/* <Button
-        size="small"
-        color="error"
-        variant="text"
-        onClick={() => deleteWord(id)}
-      >
-        <DeleteForeverIcon />
-      </Button> */}
+        <Button
+          size="small"
+          color="error"
+          variant="text"
+          sx={{ alignContent: "right" }}
+          onClick={() => deleteWord(id)}
+        >
+          <DeleteForeverIcon />
+        </Button>
       </li>
     </>
   );

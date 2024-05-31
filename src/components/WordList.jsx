@@ -9,6 +9,7 @@ export function WordList({ wordList, toggleWordState, deleteWord }) {
         width: "100%",
         height: "550px",
         overflow: "auto",
+        marginLeft: "25px",
       }}
     >
       {wordList.length === 0 && "No word to show"}

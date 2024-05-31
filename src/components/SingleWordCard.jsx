@@ -122,7 +122,7 @@ export function SingleWordCard({
           height: "40px",
         }}
       >
-        <Button
+        {/* <Button
           size="sm"
           color="danger"
           variant="text"
@@ -130,11 +130,12 @@ export function SingleWordCard({
           onClick={() => deleteWord(id)}
         >
           <DeleteIcon color="error" />
-        </Button>
+        </Button> */}
         <Checkbox
           type="checkbox"
+          sx={{ width: "100%", height: "32px", color: "#1769aa" }}
           // icon={<FavoriteBorder />}
-          // checkedIcon={<Favorite />}
+          checkedIcon={<Favorite />}
           {...label}
           checked={is_mastered}
           onChange={(e) => toggleWordState(id, e.target.checked)}
@@ -142,7 +143,7 @@ export function SingleWordCard({
         <Button
           size="sm"
           variant="text"
-          sx={{ width: "100px" }}
+          sx={{ width: "100%", marginRight: "8px" }}
           onClick={() => {
             setOpen(true);
             showDefinition();
