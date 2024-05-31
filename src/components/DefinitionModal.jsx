@@ -84,15 +84,17 @@ export default function DefinitionModal({
         {!definition.length && (
           <>
             <Divider />
-            <p style={{ color: "gray", textAlign: "center", width: "100%" }}>
-              Definition not found
-            </p>
+
             <Link
-              href="https://translate.google.com/details?sl=fr&tl=en&text=triska%C3%AFdekaphobie%0A&op=translate"
+              href={`https://translate.google.com/?sl=fr&tl=en&text=${word}%0A&op=translate`}
               target="_blank"
-              sx={{ textAlign: "center" }}
+              sx={{
+                textAlign: "center",
+                textDecoration: "none",
+                marginTop: "10px",
+              }}
             >
-              Check at Google
+              <strong>Check at Google</strong>
             </Link>
           </>
         )}
@@ -107,6 +109,31 @@ export default function DefinitionModal({
               <Grid container sx={{ flexGrow: 0, overflow: "auto" }}>
                 <Grid>
                   <Item>
+                    {!d.translations.length && (
+                      <>
+                        <Divider />
+                        <p
+                          style={{
+                            color: "gray",
+                            textAlign: "center",
+                            width: "100%",
+                          }}
+                        >
+                          Definition not found
+                        </p>
+                        <Link
+                          href={`https://translate.google.com/?sl=fr&tl=en&text=${word}%0A&op=translate`}
+                          target="_blank"
+                          sx={{
+                            textAlign: "center",
+                            textDecoration: "none",
+                            marginTop: "10px",
+                          }}
+                        >
+                          <strong>Check at Google</strong>
+                        </Link>
+                      </>
+                    )}
                     {d.translations.map((w) => {
                       return (
                         <Item key={generateKey()}>
