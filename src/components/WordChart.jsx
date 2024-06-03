@@ -1,10 +1,28 @@
 import ReactECharts from "echarts-for-react";
 import { useState, useEffect } from "react";
+import axios from "axios";
 
 export default function WordChart() {
-  var option;
+  const url = import.meta.env.VITE_BACKEND_URL;
 
-  option = {
+  const [wordData, setWordData] = useState([]);
+  const [masteredData, setMasteredData] = useState([]);
+  const [month, setMonth] = useState([]);
+
+  useEffect(() => {
+    async function getData() {
+      const getData = await axios.get(`${url}/word/data`);
+      const data = getData.data;
+      console.log(data);
+      setMonth(data.monthsArr);
+      setWordData(data.arrOfWords);
+      setMasteredData(data.arrOfMastered);
+    }
+
+    getData();
+  }, []);
+
+  var option = {
     legend: {},
     tooltip: {
       trigger: "axis",
@@ -12,14 +30,14 @@ export default function WordChart() {
     },
     dataset: {
       source: [
-        ["product", "2012", "2013", "2014", "2015", "2016", "2017"],
-        ["Total words", 56.5, 82.1, 88.7, 70.1, 53.4, 85.1],
-        ["Mastered words", 51.1, 51.4, 55.1, 53.3, 73.8, 68.7],
+        ["year", ...month],
+        ["Total words", ...wordData],
+        ["Mastered words", ...masteredData],
       ],
     },
     xAxis: { type: "category" },
     yAxis: { gridIndex: 0 },
-    grid: { top: "55%" },
+    grid: { top: "50%" },
     series: [
       {
         type: "line",
@@ -45,9 +63,9 @@ export default function WordChart() {
           formatter: "{b}: {@2012} ({d}%)",
         },
         encode: {
-          itemName: "product",
-          value: "2012",
-          tooltip: "2012",
+          itemName: "year",
+          value: month[0],
+          tooltip: month[0],
         },
       },
     ],

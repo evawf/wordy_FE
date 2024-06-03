@@ -3,6 +3,8 @@ import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import EditNoteIcon from "@mui/icons-material/EditNote";
 import EditWordModal from "./EditWordModal";
 import { useState } from "react";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 
 export function WordCard({
   is_mastered,
@@ -33,27 +35,19 @@ export function WordCard({
           alignItems: "center",
         }}
       >
-        {/* <label htmlFor="wordState"> */}
-        <label
-          style={
-            {
-              // width: "100%",
-              // display: "flex",
-              // flexDirection: "row",
-              // justifyContent: "space-around",
-              // overflow: "auto",
-              // marginLeft: "20px",
-            }
-          }
-        >
+        <label>
           <input
-            // id="wordState"
             type="checkbox"
             checked={is_mastered}
-            // onChange={(e) => toggleWordState(id, e.target.checked)}
+            onChange={(e) => toggleWordState(id, e.target.checked)}
           />
         </label>
-        <p style={{ width: "100%", overflow: "auto" }}>{word}</p>
+        <Box
+          style={{ width: "100%", overflow: "auto" }}
+          color={is_mastered ? "green" : "none"}
+        >
+          {word}
+        </Box>
         <Button
           variant="text"
           size="small"

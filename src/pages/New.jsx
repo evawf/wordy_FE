@@ -120,9 +120,7 @@ export default function New() {
           my: 0.5,
         }}
       >
-        {/* <Box>Mastered</Box> */}
-        <Box>Word</Box>
-        {/* <Box>Update</Box> */}
+        <Box>Words</Box>
       </Box>
       <Divider sx={{ border: "0.5px solid gray", width: "100%" }} />
       {isDataLoading ? <Loader /> : <></>}
@@ -131,7 +129,6 @@ export default function New() {
         toggleWordState={toggleWordState}
         deleteWord={deleteWord}
       />
-
       <BottomNav />
     </Box>
   );
