@@ -55,7 +55,11 @@ export default function Words() {
 
   return (
     <Box
-      sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
     >
       <h1 sx={{}}>Today's Words</h1>
       {isDataLoading ? <Loader /> : <></>}
