@@ -9,12 +9,17 @@ import WordChart from "../components/WordChart";
 export default function Home() {
   return (
     <Box
-      sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        marginTop: "50px",
+      }}
     >
       <h2>Dashboard</h2>
       {/* <Link href="/words">Words of the day</Link>
       <Link href="/new">Add new words</Link> */}
-      <Box sx={{ my: 5, textAlign: "center", width: "100%" }}>
+      <Box sx={{ my: 2, textAlign: "center", width: "100%" }}>
         <h4>Combating the Curve of Forgeting</h4>
         <Card sx={{ mt: 2, p: 2 }}>
           <CardActionArea>

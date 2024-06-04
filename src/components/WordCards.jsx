@@ -9,7 +9,7 @@ export function WordCards({ words, toggleWordState, deleteWord }) {
         width: "98%",
         top: 15,
         overflow: "auto",
-        marginBottom: "50px",
+        marginBottom: "70px",
       }}
     >
       {words.length === 0 &&

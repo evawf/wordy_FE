@@ -107,9 +107,10 @@ export default function New() {
         flexDirection: "column",
         alignItems: "center",
         mx: 4,
+        marginTop: "50px",
       }}
     >
-      <h1>+ New Word</h1>
+      <h2>+ New Word</h2>
       <NewWordForm onSubmit={addWord} />
       <Box
         sx={{

@@ -59,9 +59,10 @@ export default function Words() {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
+        marginTop: "50px",
       }}
     >
-      <h1 sx={{}}>Today's Words</h1>
+      <h2 sx={{}}>Today's Words</h2>
       {isDataLoading ? <Loader /> : <></>}
       <WordCards
         words={words}
