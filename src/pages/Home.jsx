@@ -1,38 +1,58 @@
+import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
-import BottomNav from "../components/BottomNav";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
-import { CardActionArea } from "@mui/material";
-import WordChart from "../components/WordChart";
+import { useNavigate } from "react-router-dom";
 
 export default function Home() {
+  const navigate = useNavigate();
+
+  const openRegisterPage = () => {
+    navigate("/register");
+  };
+
+  const openLoginPage = () => {
+    navigate("/login");
+  };
+
   return (
     <Box
       sx={{
+        width: "100%",
         display: "flex",
         flexDirection: "column",
+        alignContent: "center",
         alignItems: "center",
-        marginTop: "50px",
       }}
     >
-      <h2>Dashboard</h2>
-      {/* <Link href="/words">Words of the day</Link>
-      <Link href="/new">Add new words</Link> */}
-      <Box sx={{ my: 2, textAlign: "center", width: "100%" }}>
-        <h4>Combating the Curve of Forgeting</h4>
-        <Card sx={{ mt: 2, p: 2 }}>
-          <CardActionArea>
-            <WordChart sx={{ mt: 10 }} />
-            <CardContent>
-              <Typography variant="body2" color="text.secondary">
-                Combating the Curve of Forgeting
-              </Typography>
-            </CardContent>
-          </CardActionArea>
-        </Card>
+      <Box sx={{ position: "fixed", top: 100, textAlign: "center" }}>
+        <h1>Wordy</h1>
+        <h2>Make learning happier</h2>
       </Box>
-      <BottomNav />
+      <Box
+        sx={{
+          width: "100%",
+          display: "flex",
+          position: "fixed",
+          paddingLeft: "20px",
+          paddingRight: "20px",
+          paddingBottom: "50px",
+          bottom: 20,
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Button
+          variant="contained"
+          fullWidth
+          onClick={() => openRegisterPage()}
+        >
+          Sign up
+        </Button>
+        <br></br>
+        <Button variant="outlined" fullWidth onClick={() => openLoginPage()}>
+          Already have an account? Log in
+        </Button>
+      </Box>
     </Box>
   );
 }

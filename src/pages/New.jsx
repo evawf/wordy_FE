@@ -22,7 +22,7 @@ export default function New() {
   useEffect(() => {
     async function getWordsData() {
       try {
-        const { data } = await axios.get(`${url}/allwords`);
+        const { data } = await axios.get(`${url}/allwords`, {});
         const words = data.words;
         if (words.length) {
           // localStorage.setItem("WORDS", JSON.stringify(words));
