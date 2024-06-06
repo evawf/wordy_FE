@@ -5,8 +5,19 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 import WordChart from "../components/WordChart";
+import { useNavigate } from "react-router-dom";
+import { useState, useEffect, useContext } from "react";
 
 export default function Dashboard() {
+  const currentUser = JSON.parse(localStorage.getItem("user"));
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!currentUser) {
+      navigate("/login");
+    }
+  }, []);
+
   return (
     <Box
       sx={{
