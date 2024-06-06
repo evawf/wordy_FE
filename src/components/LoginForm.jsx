@@ -12,7 +12,6 @@ export default function LoginForm({ onSubmit }) {
     e.preventDefault();
     if (email === "" || password === "")
       return alert("Please enter email and password!");
-    console.log(email, password);
     const user = {
       email: email,
       password: password,

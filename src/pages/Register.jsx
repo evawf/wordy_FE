@@ -17,7 +17,6 @@ export default function Register() {
     console.log("newUser: ", newUser);
     try {
       const addNewUser = await axios.post(`${url}/register`, newUser);
-      console.log(addNewUser);
       alert(addNewUser.data.message);
       navigate("/login");
     } catch (err) {

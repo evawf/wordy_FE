@@ -4,7 +4,7 @@ import Dashboard from "./pages/Dashboard";
 import Words from "./pages/Words";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Register from "./pages/Register";
 import axios from "axios";
 
@@ -25,9 +25,11 @@ export default function App() {
           <Route exact path="/" element={<Home />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/register" element={<Register />} />
+          {/* <UserContext.Provider value={setUserName}> */}
           <Route exact path="/dashboard" element={<Dashboard />} />
           <Route exact path="/new" element={<New />} />
           <Route exact path="/words" element={<Words />} />
+          {/* </UserContext.Provider> */}
         </Routes>
       ) : (
         <>Please open the app on your mobile.</>
