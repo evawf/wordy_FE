@@ -40,12 +40,17 @@ export default function Login() {
   };
 
   return (
-    <Box>
+    <Box
+      sx={{
+        marginTop: "50px",
+      }}
+    >
       <Box
         sx={{
           display: "flex",
           flexDirection: "row",
           justifyContent: "space-between",
+          width: "100%",
         }}
       >
         <Button variant="text" onClick={() => openHomepage()}>

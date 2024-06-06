@@ -24,7 +24,7 @@ export default function Register() {
   };
 
   return (
-    <Box>
+    <Box sx={{ marginTop: "50px" }}>
       <Box
         sx={{
           display: "flex",
