@@ -59,12 +59,15 @@ export default function New() {
       });
 
       const data = addNewWord.data;
-      if (data.newWordAdded) {
-        const newWord = { id: data.id, word: data.newWord, is_mastered: false };
+      console.log("data: ", data);
+
+      if (data.msg === "You just added a new word") {
+        const addedWord = { id: data.id, word: newWord, is_mastered: false };
+        console.log("newWord: ", addedWord);
 
         setWordList((currentWordList) => {
           // return [...currentWordList, newWord];
-          return [newWord, ...currentWordList];
+          return [addedWord, ...currentWordList];
         });
       }
 
