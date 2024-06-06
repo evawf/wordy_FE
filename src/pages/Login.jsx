@@ -5,11 +5,12 @@ import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import LoginForm from "../components/LoginForm";
 import useGlobalUserContext from "../globalContext/UserContext";
+import { UserContext } from "../globalContext/UserContext";
 
 export default function Login() {
   const navigate = useNavigate();
   const url = import.meta.env.VITE_BACKEND_URL;
-  const { userName, setUserName } = useGlobalUserContext();
+  const { updateUserName } = useGlobalUserContext();
 
   const openHomepage = () => {
     navigate("/");
@@ -19,12 +20,17 @@ export default function Login() {
     try {
       const getUser = await axios.post(`${url}/login`, user);
       const userInfo = getUser.data;
-      console.log(userInfo.userName);
       alert(getUser.data.message);
+
       if (userInfo) {
-        setUserName(userInfo.userName);
-        console.log("userName:", userName);
-        // navigate("/new");
+        // updateUserName(userInfo.userName);
+        const user = {
+          userName: userInfo.userName,
+          userId: userInfo.userId,
+        };
+        localStorage.setItem("user", JSON.stringify(user));
+
+        navigate("/new");
       } else {
         navigate("/register");
       }

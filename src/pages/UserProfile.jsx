@@ -7,18 +7,30 @@ import Box from "@mui/material/Box";
 import { defineWord } from "wordreference";
 import Divider from "@mui/material/Divider";
 import Loader from "../components/Loader";
+import { useNavigate } from "react-router-dom";
 
 export default function UserProfile() {
-  const [user, setUser] = useState({});
   const url = import.meta.env.VITE_BACKEND_URL;
+  const navigate = useNavigate();
+  const currentUser = JSON.parse(localStorage.getItem("user"));
+
   useEffect(() => {
-    const getUser = async () => {
-      try {
-        const getUserData = await axios.get(`${url}/user/`);
-      } catch (err) {
-        console.log(err);
-      }
-    };
+    if (!currentUser) {
+      navigate("/login");
+    } else {
+      const getUser = async () => {
+        try {
+          const getUserData = await axios.get(
+            `${url}/users/${currentUser.userId}`
+          );
+          console.log(getUserData);
+        } catch (err) {
+          console.log(err);
+        }
+      };
+
+      getUser();
+    }
   }, []);
 
   return <>My profile page</>;

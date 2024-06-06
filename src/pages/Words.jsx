@@ -4,22 +4,28 @@ import axios from "axios";
 import BottomNav from "../components/BottomNav";
 import Box from "@mui/material/Box";
 import Loader from "../components/Loader";
+import { useNavigate } from "react-router-dom";
 
 export default function Words() {
   const [isDataLoading, setIsDataLoading] = useState(false);
+  const navigate = useNavigate();
+  const currentUser = JSON.parse(localStorage.getItem("user"));
 
   const url = import.meta.env.VITE_BACKEND_URL;
   const [words, setWords] = useState([]);
 
   useEffect(() => {
-    setIsDataLoading(true);
-
-    async function getRandomWords() {
-      const getWords = await axios.get(`${url}/words`);
-      setWords(getWords.data.words);
-      setIsDataLoading(false);
+    if (!currentUser) {
+      navigate("/login");
+    } else {
+      setIsDataLoading(true);
+      async function getRandomWords() {
+        const getWords = await axios.get(`${url}/words`);
+        setWords(getWords.data.words);
+        setIsDataLoading(false);
+      }
+      getRandomWords();
     }
-    getRandomWords();
   }, []);
 
   async function toggleWordState(id, is_mastered) {

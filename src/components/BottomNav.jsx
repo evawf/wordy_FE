@@ -8,6 +8,7 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import DashboardIcon from "@mui/icons-material/Dashboard";
 
 export default function BottomNav() {
   const url = import.meta.env.VITE_BACKEND_URL;
@@ -16,6 +17,7 @@ export default function BottomNav() {
   const logoutUser = async () => {
     await axios.post(`${url}/logout`);
     navigate("/login");
+    localStorage.clear();
   };
 
   return (
@@ -36,7 +38,7 @@ export default function BottomNav() {
       }}
     >
       <Link
-        href="/"
+        href="/dashboard"
         sx={{
           display: "flex",
           flexDirection: "row",
@@ -44,7 +46,7 @@ export default function BottomNav() {
           alignItems: "center",
         }}
       >
-        <HomeIcon sx={{ fontSize: "35px" }} />
+        <DashboardIcon sx={{ fontSize: "35px" }} />
       </Link>
       <Link
         href="/words"

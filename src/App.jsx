@@ -4,14 +4,15 @@ import Dashboard from "./pages/Dashboard";
 import Words from "./pages/Words";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import Register from "./pages/Register";
 import axios from "axios";
+import { UserContext } from "./globalContext/UserContext";
+import UserProfile from "./pages/UserProfile";
 
 export default function App() {
   const [width, setWidth] = useState(window.innerWidth);
   const breakpoint = 620;
-
   axios.defaults.withCredentials = true;
 
   useEffect(() => {
@@ -25,10 +26,12 @@ export default function App() {
           <Route exact path="/" element={<Home />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/register" element={<Register />} />
-          {/* <UserContext.Provider value={setUserName}> */}
+          {/* <UserContext.Provider value={{ userName, setUserName }}> */}
           <Route exact path="/dashboard" element={<Dashboard />} />
           <Route exact path="/new" element={<New />} />
           <Route exact path="/words" element={<Words />} />
+          <Route exact path="/profile" element={<UserProfile />} />
+
           {/* </UserContext.Provider> */}
         </Routes>
       ) : (

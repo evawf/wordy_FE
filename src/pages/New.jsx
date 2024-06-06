@@ -8,6 +8,7 @@ import { defineWord } from "wordreference";
 import Divider from "@mui/material/Divider";
 import Loader from "../components/Loader";
 import useGlobalUserContext from "../globalContext/UserContext";
+import { useNavigate } from "react-router-dom";
 
 export default function New() {
   // const [wordList, setWordList] = useState(() => {
@@ -15,28 +16,31 @@ export default function New() {
   //   if (localValue === null) return [];
   //   return JSON.parse(localValue);
   // });
-  const { userName, setUserName } = useGlobalUserContext();
-  console.log("userName:", userName);
+  const currentUser = JSON.parse(localStorage.getItem("user"));
   const [isDataLoading, setIsDataLoading] = useState(false);
   const [wordList, setWordList] = useState([]);
   const url = import.meta.env.VITE_BACKEND_URL;
+  const navigate = useNavigate();
 
   useEffect(() => {
-    if (!userName) console.log("no user");
-    async function getWordsData() {
-      try {
-        const { data } = await axios.get(`${url}/allwords`, {});
-        const words = data.words;
-        if (words.length) {
-          // localStorage.setItem("WORDS", JSON.stringify(words));
-          setWordList(words);
+    if (!currentUser) {
+      navigate("/login");
+    } else {
+      async function getWordsData() {
+        try {
+          const { data } = await axios.get(`${url}/allwords`, {});
+          const words = data.words;
+          if (words.length) {
+            // localStorage.setItem("WORDS", JSON.stringify(words));
+            setWordList(words);
+          }
+        } catch (err) {
+          console.log("msg: ", err);
         }
-      } catch (err) {
-        console.log("msg: ", err);
       }
-    }
 
-    getWordsData();
+      getWordsData();
+    }
   }, []);
 
   async function addWord(newWord) {
