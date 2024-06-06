@@ -59,11 +59,9 @@ export default function New() {
       });
 
       const data = addNewWord.data;
-      console.log("data: ", data);
 
-      if (data.msg === "You just added a new word") {
+      if (data.msg === "word added") {
         const addedWord = { id: data.id, word: newWord, is_mastered: false };
-        console.log("newWord: ", addedWord);
 
         setWordList((currentWordList) => {
           // return [...currentWordList, newWord];
