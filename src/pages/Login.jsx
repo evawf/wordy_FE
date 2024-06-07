@@ -20,7 +20,7 @@ export default function Login() {
     try {
       const getUser = await axios.post(`${url}/login`, user);
       const userInfo = getUser.data;
-      alert(getUser.data.message);
+      // alert(getUser.data.message);
 
       if (userInfo) {
         // updateUserName(userInfo.userName);

@@ -8,7 +8,7 @@ import { useState, useEffect } from "react";
 import Register from "./pages/Register";
 import axios from "axios";
 import { UserContext } from "./globalContext/UserContext";
-import UserProfile from "./pages/UserProfile";
+import Profile from "./pages/Profile";
 
 export default function App() {
   const [width, setWidth] = useState(window.innerWidth);
@@ -30,7 +30,7 @@ export default function App() {
           <Route exact path="/dashboard" element={<Dashboard />} />
           <Route exact path="/new" element={<New />} />
           <Route exact path="/words" element={<Words />} />
-          <Route exact path="/profile" element={<UserProfile />} />
+          <Route exact path="/profile" element={<Profile />} />
 
           {/* </UserContext.Provider> */}
         </Routes>
