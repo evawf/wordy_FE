@@ -50,7 +50,7 @@ export default function LoginForm({ onSubmit }) {
             name="email"
             id="email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => setEmail(e.target?.value)}
             sx={{ height: "40px", my: 1 }}
             required
           />
@@ -60,7 +60,7 @@ export default function LoginForm({ onSubmit }) {
             name="password"
             id="password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => setPassword(e.target?.value)}
             sx={{ height: "40px" }}
             required
           />
