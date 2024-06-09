@@ -4,7 +4,6 @@ import { WordList } from "../components/WordList";
 import axios from "axios";
 import BottomNav from "../components/BottomNav";
 import Box from "@mui/material/Box";
-import { defineWord } from "wordreference";
 import Divider from "@mui/material/Divider";
 import Loader from "../components/Loader";
 import { useNavigate } from "react-router-dom";
@@ -44,17 +43,10 @@ export default function New() {
 
   async function addWord(newWord) {
     try {
-      // API Call wordreference to get autolink and definition
       setIsDataLoading(true);
-
-      // const getDefinition = await defineWord(newWord, "French-English");
-      // const audio = getDefinition.audioLinks[0];
-      // const definition = getDefinition.sections;
 
       const addNewWord = await axios.post(`${url}/new`, {
         newWord: newWord.trim(),
-        // audio: audio,
-        // definition: definition,
       });
 
       const data = addNewWord.data;
@@ -63,7 +55,6 @@ export default function New() {
         const addedWord = { id: data.id, word: newWord, is_mastered: false };
 
         setWordList((currentWordList) => {
-          // return [...currentWordList, newWord];
           return [addedWord, ...currentWordList];
         });
       }
