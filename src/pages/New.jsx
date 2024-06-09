@@ -47,14 +47,14 @@ export default function New() {
       // API Call wordreference to get autolink and definition
       setIsDataLoading(true);
 
-      const getDefinition = await defineWord(newWord, "French-English");
-      const audio = getDefinition.audioLinks[0];
-      const definition = getDefinition.sections;
+      // const getDefinition = await defineWord(newWord, "French-English");
+      // const audio = getDefinition.audioLinks[0];
+      // const definition = getDefinition.sections;
 
       const addNewWord = await axios.post(`${url}/new`, {
         newWord: newWord.trim(),
-        audio: audio,
-        definition: definition,
+        // audio: audio,
+        // definition: definition,
       });
 
       const data = addNewWord.data;
