@@ -1,8 +1,6 @@
 import { useState } from "react";
 import Box from "@mui/material/Box";
 import Input from "@mui/joy/Input";
-import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import Button from "@mui/material/Button";
 
 export function RegisterForm({ onSubmit }) {
   const [displayName, setDisplayName] = useState("");

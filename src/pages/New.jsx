@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import { NewWordForm } from "../components/NewWordForm";
 import { WordList } from "../components/WordList";
 import axios from "axios";
@@ -7,7 +7,6 @@ import Box from "@mui/material/Box";
 import { defineWord } from "wordreference";
 import Divider from "@mui/material/Divider";
 import Loader from "../components/Loader";
-import useGlobalUserContext from "../globalContext/UserContext";
 import { useNavigate } from "react-router-dom";
 
 export default function New() {

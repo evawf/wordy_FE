@@ -2,7 +2,6 @@ import { RegisterForm } from "../components/RegisterForm";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import { useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
 import axios from "axios";
 
 export default function Register() {

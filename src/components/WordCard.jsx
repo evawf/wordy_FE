@@ -4,7 +4,6 @@ import EditNoteIcon from "@mui/icons-material/EditNote";
 import EditWordModal from "./EditWordModal";
 import { useState } from "react";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
 
 export function WordCard({
   is_mastered,

@@ -1,15 +1,13 @@
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import { useNavigate } from "react-router-dom";
-import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import LoginForm from "../components/LoginForm";
 import useGlobalUserContext from "../globalContext/UserContext";
-import { UserContext } from "../globalContext/UserContext";
 
 export default function Login() {
   const navigate = useNavigate();
-  const url = import.meta.env.VITE_BACKEND_URL;
+  const url = import.meta.env?.VITE_BACKEND_URL;
   const { updateUserName } = useGlobalUserContext();
 
   const openHomepage = () => {
@@ -19,14 +17,14 @@ export default function Login() {
   const loginUser = async (user) => {
     try {
       const getUser = await axios.post(`${url}/login`, user);
-      const userInfo = getUser.data;
+      const userInfo = getUser?.data;
       // alert(getUser.data.message);
 
       if (userInfo) {
         // updateUserName(userInfo.userName);
         const user = {
-          userName: userInfo.userName,
-          userId: userInfo.userId,
+          userName: userInfo?.userName,
+          userId: userInfo?.userId,
         };
         localStorage.setItem("user", JSON.stringify(user));
 

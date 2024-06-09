@@ -7,7 +7,6 @@ import Login from "./pages/Login";
 import { useState, useEffect } from "react";
 import Register from "./pages/Register";
 import axios from "axios";
-import { UserContext } from "./globalContext/UserContext";
 import Profile from "./pages/Profile";
 
 export default function App() {

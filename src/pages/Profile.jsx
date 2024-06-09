@@ -1,14 +1,9 @@
 import { useState, useEffect } from "react";
-import { NewWordForm } from "../components/NewWordForm";
-import { WordList } from "../components/WordList";
 import axios from "axios";
 import BottomNav from "../components/BottomNav";
 import Box from "@mui/material/Box";
-import { defineWord } from "wordreference";
 import Divider from "@mui/material/Divider";
-import Loader from "../components/Loader";
 import { useNavigate } from "react-router-dom";
-import { Margin, Padding, Widgets, WidthFull } from "@mui/icons-material";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import Button from "@mui/material/Button";
 
