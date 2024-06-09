@@ -105,7 +105,7 @@ export default function Profile() {
               px: 2,
             }}
           >
-            {profile.displayName}
+            {profile?.displayName}
           </Box>
           <Box
             sx={{
@@ -115,7 +115,7 @@ export default function Profile() {
               px: 2,
             }}
           >
-            {profile.firstName}
+            {profile?.firstName}
           </Box>
           <Box
             sx={{
@@ -125,7 +125,7 @@ export default function Profile() {
               px: 2,
             }}
           >
-            {profile.lastName}
+            {profile?.lastName}
           </Box>
           <Box
             sx={{
@@ -135,7 +135,7 @@ export default function Profile() {
               px: 2,
             }}
           >
-            {profile.email}
+            {profile?.email}
           </Box>
         </Box>
       </Box>
