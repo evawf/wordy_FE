@@ -22,7 +22,7 @@ export default function Profile() {
           const getUserData = await axios.get(
             `${url}/users/${currentUser.userId}`
           );
-          if (!getUser) {
+          if (!getUserData.data) {
             navigate("/");
           } else {
             setProfile(getUserData.data.user);
@@ -42,6 +42,15 @@ export default function Profile() {
     );
     navigate("/");
     localStorage.clear();
+  };
+
+  const handleToggleUserStatus = async () => {
+    const isActive = profile.isActive;
+    const updateUserStatus = await axios.put(
+      `${url}/users/${currentUser.userId}/status`,
+      { is_active: !isActive }
+    );
+    setProfile({ ...profile, isActive: !profile.isActive });
   };
 
   const logoutUser = async () => {
@@ -147,9 +156,9 @@ export default function Profile() {
           fullWidth
           sx={{ mx: 1 }}
           color="error"
-          onClick={() => handleDeleteAccount()}
+          onClick={() => handleToggleUserStatus()}
         >
-          Deactivate
+          {profile.isActive ? "Deactivate" : "Activate"}
         </Button>
         <Button variant="contained" fullWidth sx={{ mx: 1 }} color="primary">
           Edit

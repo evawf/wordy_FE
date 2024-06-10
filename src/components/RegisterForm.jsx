@@ -11,7 +11,6 @@ export function RegisterForm({ onSubmit }) {
     e.preventDefault();
     if (email === "" || password === "")
       return alert("Please enter email and password!");
-    console.log(email, password);
     const newUser = {
       display_name: displayName,
       email: email.toLowerCase().trim(),
