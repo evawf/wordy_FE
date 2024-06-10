@@ -11,7 +11,7 @@ export default function LoginForm({ onSubmit }) {
     if (email === "" || password === "")
       return alert("Please enter email and password!");
     const user = {
-      email: email,
+      email: email.toLowerCase().trim(),
       password: password,
     };
     onSubmit(user);

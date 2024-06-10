@@ -41,7 +41,8 @@ export default function New() {
     }
   }, []);
 
-  async function addWord(newWord) {
+  async function addWord(word) {
+    const newWord = word.toLowerCase().trim();
     try {
       setIsDataLoading(true);
 

@@ -25,16 +25,15 @@ export default function App() {
           <Route exact path="/" element={<Home />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/register" element={<Register />} />
-          {/* <UserContext.Provider value={{ userName, setUserName }}> */}
           <Route exact path="/dashboard" element={<Dashboard />} />
           <Route exact path="/new" element={<New />} />
           <Route exact path="/words" element={<Words />} />
           <Route exact path="/profile" element={<Profile />} />
-
-          {/* </UserContext.Provider> */}
         </Routes>
       ) : (
-        <>Please open the app on your mobile.</>
+        <div style={{ width: "100%", height: "100%", marginTop: "200px" }}>
+          <h3 style={{ width: "100%" }}>Desktop version coming soon...</h3>
+        </div>
       )}
     </>
   );

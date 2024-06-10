@@ -12,6 +12,10 @@ export default function Register() {
     navigate("/");
   };
 
+  const openLogin = () => {
+    navigate("/login");
+  };
+
   const addNewUser = async (newUser) => {
     try {
       const addNewUser = await axios.post(`${url}/register`, newUser);
@@ -34,7 +38,9 @@ export default function Register() {
         <Button variant="text" onClick={() => openHomepage()}>
           Back
         </Button>
-        <Button variant="text">Sign up</Button>
+        <Button variant="text" onClick={() => openLogin()}>
+          LOG IN
+        </Button>
       </Box>
       <RegisterForm onSubmit={addNewUser} />
     </Box>

@@ -44,6 +44,12 @@ export default function Profile() {
     localStorage.clear();
   };
 
+  const logoutUser = async () => {
+    await axios.post(`${url}/logout`);
+    navigate("/login");
+    localStorage.clear();
+  };
+
   return (
     <Box
       sx={{
@@ -56,9 +62,10 @@ export default function Profile() {
         marginTop: "50px",
       }}
     >
-      <Box>
-        <AccountCircleIcon sx={{ fontSize: 60 }} />
-      </Box>
+      <AccountCircleIcon sx={{ fontSize: 60, marginBottom: "10px" }} />
+      <Button variant="outlined" onClick={() => logoutUser()}>
+        Logout
+      </Button>
       <Divider sx={{ width: "100%", my: 2 }} />
 
       <Box

@@ -14,6 +14,10 @@ export default function Login() {
     navigate("/");
   };
 
+  const openRegister = () => {
+    navigate("/register");
+  };
+
   const loginUser = async (user) => {
     try {
       const getUser = await axios.post(`${url}/login`, user);
@@ -54,7 +58,9 @@ export default function Login() {
         <Button variant="text" onClick={() => openHomepage()}>
           Back
         </Button>
-        <Button variant="text">Log in</Button>
+        <Button variant="text" onClick={() => openRegister()}>
+          SIGN UP
+        </Button>
       </Box>
       <LoginForm onSubmit={loginUser} />
     </Box>

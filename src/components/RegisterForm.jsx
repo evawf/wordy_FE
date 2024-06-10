@@ -14,7 +14,7 @@ export function RegisterForm({ onSubmit }) {
     console.log(email, password);
     const newUser = {
       display_name: displayName,
-      email: email,
+      email: email.toLowerCase().trim(),
       password: password,
     };
     onSubmit(newUser);

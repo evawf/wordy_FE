@@ -15,13 +15,7 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 
 import axios from "axios";
 
-export function SingleWordCard({
-  is_mastered,
-  id,
-  word,
-  toggleWordState,
-  deleteWord,
-}) {
+export function SingleWordCard({ is_mastered, id, word, toggleWordState }) {
   const label = { inputProps: { "aria-label": "Checkbox heart" } };
   const url = import.meta.env.VITE_BACKEND_URL;
 
