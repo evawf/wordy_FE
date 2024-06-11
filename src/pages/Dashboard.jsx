@@ -29,7 +29,6 @@ export default function Dashboard() {
     >
       <h2>Dashboard</h2>
       <Box sx={{ my: 2, textAlign: "center", width: "100%" }}>
-        <h4>Combating the Curve of Forgeting</h4>
         <Card sx={{ mt: 2, p: 2 }}>
           <CardActionArea>
             <WordChart sx={{ mt: 10 }} />

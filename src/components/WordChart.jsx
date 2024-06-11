@@ -109,7 +109,7 @@ export default function WordChart() {
       </Box>
       <ReactECharts
         option={option}
-        style={{ height: "400px", width: "100%" }}
+        style={{ height: "350px", width: "100%" }}
       />
     </Box>
   );
