@@ -6,12 +6,14 @@ import Divider from "@mui/material/Divider";
 import { useNavigate } from "react-router-dom";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import Button from "@mui/material/Button";
+import EditProfileModal from "../components/EditProfileModal";
 
 export default function Profile() {
   const url = import.meta.env.VITE_BACKEND_URL;
   const navigate = useNavigate();
   const currentUser = JSON.parse(localStorage.getItem("user"));
   const [profile, setProfile] = useState({});
+  const [openEdit, setOpenEdit] = useState(false);
 
   useEffect(() => {
     if (!currentUser) {
@@ -35,14 +37,6 @@ export default function Profile() {
       getUser();
     }
   }, []);
-
-  const handleDeleteAccount = async () => {
-    const callDelete = await axios.put(
-      `${url}/users/${currentUser.userId}/deactivate`
-    );
-    navigate("/");
-    localStorage.clear();
-  };
 
   const handleToggleUserStatus = async () => {
     const isActive = profile.isActive;
@@ -160,10 +154,26 @@ export default function Profile() {
         >
           {profile.isActive ? "Deactivate" : "Activate"}
         </Button>
-        <Button variant="contained" fullWidth sx={{ mx: 1 }} color="primary">
+        <Button
+          variant="contained"
+          fullWidth
+          sx={{ mx: 1 }}
+          color="primary"
+          onClick={() => setOpenEdit(true)}
+        >
           Edit
         </Button>
       </Box>
+      {/********************** Edit Word Modal **********************/}
+      {currentUser && (
+        <EditProfileModal
+          id={currentUser.userId}
+          profile={profile}
+          setProfile={setProfile}
+          openEdit={openEdit}
+          setOpenEdit={setOpenEdit}
+        />
+      )}
       <BottomNav />
     </Box>
   );
