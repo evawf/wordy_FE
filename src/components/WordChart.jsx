@@ -1,5 +1,5 @@
 import ReactECharts from "echarts-for-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
@@ -13,6 +13,7 @@ export default function WordChart() {
   const [wordData, setWordData] = useState([]);
   const [masteredData, setMasteredData] = useState([]);
   const [month, setMonth] = useState([]);
+  const [pointerIdx, setPointerIdx] = useState(0);
 
   const [selectedMonth, setSelectedMonth] = useState("6");
 
@@ -45,8 +46,8 @@ export default function WordChart() {
     dataset: {
       source: [
         ["year", ...month],
-        ["Total W", ...wordData],
-        ["Mastered W", ...masteredData],
+        ["Total", ...wordData],
+        ["Mastered", ...masteredData],
       ],
     },
     xAxis: { type: "category" },
@@ -75,15 +76,27 @@ export default function WordChart() {
           focus: "self",
         },
         label: {
-          formatter: "{b}:({d}%)",
+          formatter: `{b}:{@${month[pointerIdx]}}({d}%)`,
         },
         encode: {
           itemName: "year",
-          value: month[0],
-          tooltip: month[0],
+          value: month[pointerIdx],
+          tooltip: month[pointerIdx],
         },
       },
     ],
+  };
+
+  const onChartPointer = (params) => {
+    if (params.dataIndex) {
+      setPointerIdx(params.dataIndex);
+    } else {
+      setPointerIdx(0);
+    }
+  };
+
+  const onEvents = {
+    updateAxisPointer: onChartPointer,
   };
 
   return (
@@ -110,6 +123,7 @@ export default function WordChart() {
       <ReactECharts
         option={option}
         style={{ height: "350px", width: "100%" }}
+        onEvents={onEvents}
       />
     </Box>
   );
