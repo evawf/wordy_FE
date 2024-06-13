@@ -57,7 +57,7 @@ export function SingleWordCard({ is_mastered, id, word, toggleWordState }) {
       key={generateKey()}
       sx={{
         height: "130px",
-        width: "80%",
+        width: "85%",
         borderRadius: "10px",
         m: 0,
         p: 0,
