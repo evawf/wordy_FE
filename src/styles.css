@@ -11,10 +11,6 @@ body {
   max-width: 400px;
   padding: 0;
   margin: 0 auto;
-  /* background-image: url("https://images.unsplash.com/photo-1476234251651-f353703a034d?q=80&w=2488&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
-  background-size: 150%;
-  background-repeat: no-repeat;
-  background-position-x: center; */
 }
 
 .new-item-form {
@@ -166,52 +162,14 @@ body {
   border: none;
 }
 
-/* SetTimeout for all messages: */
-#message {
-  padding: 50px;
-  background: red;
-  color: orange;
+#logo {
+  font-family: Georgia, cursive;
+  font-weight: 1000;
+  font-style: normal;
 }
 
-#message {
-  -moz-animation: cssAnimation 64s ease-in;
-  /* Firefox */
-  -webkit-animation: cssAnimation 64s ease-in;
-  /* Safari and Chrome */
-  -o-animation: cssAnimation 64s ease-in;
-  /* Opera */
-  animation: cssAnimation 64s ease-in;
-  -webkit-animation-fill-mode: forwards;
-  animation-fill-mode: forwards;
-}
-@keyframes cssAnimation {
-  0% {
-    opacity: 0;
-    display: none;
-  }
-  /* 59 sec : start fading in*/
-  92% {
-    opacity: 0;
-    display: block;
-  }
-  /* 60 sec : visible */
-  94% {
-    opacity: 1;
-    display: block;
-  }
-  /* 62 sec : start fading out */
-  97% {
-    opacity: 1;
-    display: block;
-  }
-  /* 63 sec : not visible */
-  99% {
-    opacity: 0;
-    display: block;
-  }
-  /* 64 sec */
-  100% {
-    opacity: 0;
-    display: none;
-  }
+#subtext {
+  font-family: "Gill Sans", cursive;
+  font-weight: 400;
+  font-style: normal;
 }

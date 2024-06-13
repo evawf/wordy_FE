@@ -24,8 +24,8 @@ export default function Home() {
       }}
     >
       <Box sx={{ position: "fixed", top: 100, textAlign: "center" }}>
-        <h1>Wordy</h1>
-        <h2>Make learning happier</h2>
+        <h1 id="logo">Wordy</h1>
+        <h2 id="subtext">Flash Fluent French </h2>
       </Box>
       <Box
         sx={{
