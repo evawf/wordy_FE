@@ -12,6 +12,7 @@ import Checkbox from "@mui/material/Checkbox";
 import Favorite from "@mui/icons-material/Favorite";
 
 import VisibilityIcon from "@mui/icons-material/Visibility";
+import cardBg from "../assets/cardBg.png";
 
 import axios from "axios";
 
@@ -56,13 +57,16 @@ export function SingleWordCard({ is_mastered, id, word, toggleWordState }) {
       key={generateKey()}
       sx={{
         height: "130px",
-        width: "auto",
+        width: "80%",
         borderRadius: "10px",
         m: 0,
         p: 0,
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
+        backgroundImage: `url(${cardBg})`,
+        backgroundRepeat: "none",
+        backgroundSize: "cover",
       }}
     >
       {/********************** Definition Modal **********************/}
@@ -109,7 +113,9 @@ export function SingleWordCard({ is_mastered, id, word, toggleWordState }) {
           display: "flex",
           flexDirection: "row",
           justifyContent: "space-around",
-          backgroundColor: "#d9d8d4",
+          // backgroundColor: "#d9d8d4",
+          borderTop: "1px solid white",
+          paddingTop: "8px",
           height: "40px",
         }}
       >

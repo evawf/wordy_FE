@@ -10,6 +10,10 @@ export function WordCards({ words, toggleWordState, deleteWord }) {
         top: 15,
         overflow: "auto",
         marginBottom: "70px",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
       }}
     >
       {words.length === 0 &&
