@@ -5,6 +5,7 @@ import BottomNav from "../components/BottomNav";
 import Box from "@mui/material/Box";
 import Loader from "../components/Loader";
 import { useNavigate } from "react-router-dom";
+import Button from "@mui/material/Button";
 
 export default function Words() {
   const [isDataLoading, setIsDataLoading] = useState(false);
@@ -59,6 +60,10 @@ export default function Words() {
     }
   }
 
+  const handleClick = () => {
+    navigate("/new");
+  };
+
   return (
     <Box
       sx={{
@@ -70,11 +75,24 @@ export default function Words() {
     >
       <h2 sx={{}}>Today's Words</h2>
       {isDataLoading ? <Loader /> : <></>}
-      <WordCards
-        words={words}
-        toggleWordState={toggleWordState}
-        deleteWord={deleteWord}
-      />
+      {words.length ? (
+        <WordCards
+          words={words}
+          toggleWordState={toggleWordState}
+          deleteWord={deleteWord}
+        />
+      ) : (
+        <>
+          <Button
+            variant="outlined"
+            sx={{ marginTop: 2 }}
+            onClick={() => handleClick()}
+            fullWidth
+          >
+            No word yet? Add new word
+          </Button>
+        </>
+      )}
       <BottomNav />
     </Box>
   );

@@ -38,6 +38,7 @@ export default function WordChart() {
   }, [selectedMonth]);
 
   var option = {
+    backgroundColor: "transparent",
     legend: {},
     tooltip: {
       trigger: "axis",

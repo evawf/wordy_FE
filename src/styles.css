@@ -165,3 +165,53 @@ body {
   color: white;
   border: none;
 }
+
+/* SetTimeout for all messages: */
+#message {
+  padding: 50px;
+  background: red;
+  color: orange;
+}
+
+#message {
+  -moz-animation: cssAnimation 64s ease-in;
+  /* Firefox */
+  -webkit-animation: cssAnimation 64s ease-in;
+  /* Safari and Chrome */
+  -o-animation: cssAnimation 64s ease-in;
+  /* Opera */
+  animation: cssAnimation 64s ease-in;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+@keyframes cssAnimation {
+  0% {
+    opacity: 0;
+    display: none;
+  }
+  /* 59 sec : start fading in*/
+  92% {
+    opacity: 0;
+    display: block;
+  }
+  /* 60 sec : visible */
+  94% {
+    opacity: 1;
+    display: block;
+  }
+  /* 62 sec : start fading out */
+  97% {
+    opacity: 1;
+    display: block;
+  }
+  /* 63 sec : not visible */
+  99% {
+    opacity: 0;
+    display: block;
+  }
+  /* 64 sec */
+  100% {
+    opacity: 0;
+    display: none;
+  }
+}

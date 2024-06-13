@@ -4,11 +4,14 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import LoginForm from "../components/LoginForm";
 import useGlobalUserContext from "../globalContext/UserContext";
+import { useState } from "react";
+import ShowMessage from "../components/ShowMessage";
 
 export default function Login() {
   const navigate = useNavigate();
   const url = import.meta.env?.VITE_BACKEND_URL;
   const { updateUserName } = useGlobalUserContext();
+  const [message, setMessage] = useState("");
 
   const openHomepage = () => {
     navigate("/");
@@ -22,19 +25,17 @@ export default function Login() {
     try {
       const getUser = await axios.post(`${url}/login`, user);
       const userInfo = getUser?.data;
-      alert(getUser.data.msg);
 
-      if (userInfo) {
+      if (userInfo.userId) {
         // updateUserName(userInfo.userName);
         const user = {
           userName: userInfo?.userName,
           userId: userInfo?.userId,
         };
         localStorage.setItem("user", JSON.stringify(user));
-
-        navigate("/new");
+        navigate("/words");
       } else {
-        navigate("/register");
+        setMessage(getUser.data.msg);
       }
     } catch (err) {
       console.log(err);
@@ -63,6 +64,7 @@ export default function Login() {
         </Button>
       </Box>
       <LoginForm onSubmit={loginUser} />
+      {message && <ShowMessage message={message} />}
     </Box>
   );
 }

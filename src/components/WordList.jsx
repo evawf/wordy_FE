@@ -1,5 +1,6 @@
 import { WordCard } from "./WordCard";
 import List from "@mui/material/List";
+import Button from "@mui/material/Button";
 
 export function WordList({ wordList, toggleWordState, deleteWord }) {
   return (
@@ -12,7 +13,11 @@ export function WordList({ wordList, toggleWordState, deleteWord }) {
         marginLeft: "25px",
       }}
     >
-      {wordList.length === 0 && "No word to show"}
+      {wordList.length === 0 && (
+        <Button variant="text" fullWidth sx={{ marginLeft: "-12.5px" }}>
+          You haven't added any word yet.
+        </Button>
+      )}
       {wordList.map((word) => {
         return (
           <WordCard

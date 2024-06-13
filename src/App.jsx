@@ -19,6 +19,7 @@ export default function App() {
   }, []);
 
   return (
+    // <Provider config={rollbarConfig}>
     <>
       {width < breakpoint ? (
         <Routes>
