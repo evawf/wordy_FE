@@ -106,24 +106,22 @@ export default function New() {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          // mx: 4,
-          // marginTop: "50px",
         }}
       >
         <Box
           sx={{
             width: "100%",
-            marginTop: "80px",
-            padding: 0,
+            height: "200px",
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
             position: "fixed",
-            background: "#333",
+            backgroundColor: "#333",
+            zIndex: 1,
           }}
         >
-          <h2>+ New Word</h2>
+          <h2 style={{ marginTop: "45px" }}>+ New Word</h2>
           <NewWordForm onSubmit={addWord} />
           <Box
             sx={{
@@ -132,7 +130,6 @@ export default function New() {
               flexDirection: "column",
               justifyContent: "center",
               alignItems: "center",
-              my: 0.5,
             }}
           >
             <p>Words</p>
@@ -147,11 +144,10 @@ export default function New() {
         </Box>
         <Box
           sx={{
-            marginTop: "230px",
-            height: "600px",
-            overflow: "auto",
+            marginTop: "200px",
             width: "80%",
             paddingLeft: "20px",
+            marginBottom: "80px",
           }}
         >
           {isDataLoading ? <Loader /> : <></>}
