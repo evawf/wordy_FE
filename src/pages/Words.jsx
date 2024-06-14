@@ -65,35 +65,53 @@ export default function Words() {
   };
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        marginTop: "50px",
-      }}
-    >
-      <h2 sx={{}}>Today's Words</h2>
-      {isDataLoading ? <Loader /> : <></>}
-      {words.length ? (
-        <WordCards
-          words={words}
-          toggleWordState={toggleWordState}
-          deleteWord={deleteWord}
-        />
-      ) : (
-        <>
-          <Button
-            variant="outlined"
-            sx={{ marginTop: 2 }}
-            onClick={() => handleClick()}
-            fullWidth
-          >
-            No word yet? Add new word
-          </Button>
-        </>
-      )}
-      <BottomNav />
+    <Box sx={{ display: "flex", flexDirection: "column" }}>
+      <Box
+        sx={{
+          height: "80px",
+          position: "fixed",
+          background: "#333",
+          width: "100%",
+          zIndex: 1,
+          paddingRight: "30px",
+        }}
+      >
+        <h2 style={{ textAlign: "center", marginTop: "50px" }}>
+          Today's Words
+        </h2>
+      </Box>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          marginTop: "70px",
+          overflow: "auto",
+        }}
+      >
+        {/* <Box sx={{ position: "fixed",  }}> */}
+        {/* </Box> */}
+        {isDataLoading ? <Loader /> : <></>}
+        {words.length ? (
+          <WordCards
+            words={words}
+            toggleWordState={toggleWordState}
+            deleteWord={deleteWord}
+          />
+        ) : (
+          <>
+            <Button
+              variant="outlined"
+              sx={{ marginTop: 2 }}
+              onClick={() => handleClick()}
+              fullWidth
+            >
+              No word yet? Add new word
+            </Button>
+          </>
+        )}
+        <BottomNav />
+      </Box>
     </Box>
   );
 }

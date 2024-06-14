@@ -99,37 +99,70 @@ export default function New() {
   }
 
   return (
-    <Box
-      sx={{
-        height: "100%",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        mx: 4,
-        marginTop: "50px",
-      }}
-    >
-      <h2>+ New Word</h2>
-      <NewWordForm onSubmit={addWord} />
+    <>
       <Box
         sx={{
-          width: "100%",
+          height: "100%",
           display: "flex",
-          flexDirection: "row",
-          justifyContent: "center",
-          my: 0.5,
+          flexDirection: "column",
+          alignItems: "center",
+          // mx: 4,
+          // marginTop: "50px",
         }}
       >
-        <Box>Words</Box>
+        <Box
+          sx={{
+            width: "100%",
+            marginTop: "80px",
+            padding: 0,
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            position: "fixed",
+            background: "#333",
+          }}
+        >
+          <h2>+ New Word</h2>
+          <NewWordForm onSubmit={addWord} />
+          <Box
+            sx={{
+              width: "100%",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+              my: 0.5,
+            }}
+          >
+            <p>Words</p>
+            <Divider
+              sx={{
+                border: "0.5px solid gray",
+                width: "100%",
+                marginTop: "10px",
+              }}
+            />
+          </Box>
+        </Box>
+        <Box
+          sx={{
+            marginTop: "230px",
+            height: "600px",
+            overflow: "auto",
+            width: "80%",
+            paddingLeft: "20px",
+          }}
+        >
+          {isDataLoading ? <Loader /> : <></>}
+          <WordList
+            wordList={wordList}
+            toggleWordState={toggleWordState}
+            deleteWord={deleteWord}
+          />
+        </Box>
+        <BottomNav />
       </Box>
-      <Divider sx={{ border: "0.5px solid gray", width: "100%" }} />
-      {isDataLoading ? <Loader /> : <></>}
-      <WordList
-        wordList={wordList}
-        toggleWordState={toggleWordState}
-        deleteWord={deleteWord}
-      />
-      <BottomNav />
-    </Box>
+    </>
   );
 }

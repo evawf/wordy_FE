@@ -4,6 +4,7 @@ import ViewHeadlineIcon from "@mui/icons-material/ViewHeadline";
 import Box from "@mui/material/Box";
 import { useNavigate } from "react-router-dom";
 import DashboardIcon from "@mui/icons-material/Dashboard";
+import SettingsIcon from "@mui/icons-material/Settings";
 
 export default function BottomNav() {
   const navigate = useNavigate();
@@ -34,53 +35,54 @@ export default function BottomNav() {
         href="/dashboard"
         sx={{
           display: "flex",
-          flexDirection: "row",
+          flexDirection: "column",
           justifyContent: "space-between",
           alignItems: "center",
+          textDecoration: "none",
         }}
       >
         <DashboardIcon sx={{ fontSize: "35px" }} />
+        <p style={{ fontSize: "10px" }}>Dashboard</p>
       </Link>
       <Link
         href="/words"
         sx={{
           display: "flex",
-          flexDirection: "row",
+          flexDirection: "column",
           justifyContent: "space-between",
           alignItems: "center",
+          textDecoration: "none",
         }}
       >
         <ViewHeadlineIcon sx={{ fontSize: "35px" }} />
+        <p style={{ fontSize: "10px" }}>Words</p>
       </Link>
       <Link
         href="/new"
         sx={{
           display: "flex",
-          flexDirection: "row",
+          flexDirection: "column",
           justifyContent: "space-between",
           alignItems: "center",
+          textDecoration: "none",
         }}
       >
         <AddCircleIcon sx={{ fontSize: "35px" }} />
+        <p style={{ fontSize: "10px" }}>New</p>
       </Link>
-
-      <button
-        style={{
-          width: "50px",
-          height: "50px",
-          borderRadius: "25px",
-          border: "1px solid darkGray",
-          backgroundColor: "black",
-          color: "white",
-          fontSize: "small",
+      <Link
+        href="/profile"
+        sx={{
           display: "flex",
-          justifyContent: "center",
+          flexDirection: "column",
+          justifyContent: "space-between",
           alignItems: "center",
+          textDecoration: "none",
         }}
-        onClick={() => showUserProfile()}
       >
-        {currentUser ? currentUser.userName : ""}
-      </button>
+        <SettingsIcon sx={{ fontSize: "35px" }} />
+        <p style={{ fontSize: "10px" }}>Settings</p>
+      </Link>
     </Box>
   );
 }

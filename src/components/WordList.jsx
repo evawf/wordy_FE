@@ -6,12 +6,14 @@ export function WordList({ wordList, toggleWordState, deleteWord }) {
   return (
     <List
       className="list"
-      sx={{
-        width: "100%",
-        height: "550px",
-        overflow: "auto",
-        marginLeft: "25px",
-      }}
+      sx={
+        {
+          // width: "100%",
+          // height: "450px",
+          // overflow: "auto",
+          // marginLeft: "15px",
+        }
+      }
     >
       {wordList.length === 0 && (
         <Button variant="text" fullWidth sx={{ marginLeft: "-12.5px" }}>
