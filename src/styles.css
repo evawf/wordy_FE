@@ -173,3 +173,11 @@ body {
   font-weight: 400;
   font-style: normal;
 }
+
+.singleWordCard:nth-child(odd) {
+  background-image: url("./assets/cardBgOdd.png");
+}
+
+.singleWordCard:nth-child(even) {
+  background-image: url("./assets/cardBgEven.png");
+}

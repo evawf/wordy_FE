@@ -12,7 +12,7 @@ import Checkbox from "@mui/material/Checkbox";
 import Favorite from "@mui/icons-material/Favorite";
 
 import VisibilityIcon from "@mui/icons-material/Visibility";
-import cardBg from "../assets/cardBg.png";
+// import cardBg from "../assets/cardBg.png";
 
 import axios from "axios";
 
@@ -54,6 +54,7 @@ export function SingleWordCard({ is_mastered, id, word, toggleWordState }) {
 
   return (
     <Card
+      className="singleWordCard"
       key={generateKey()}
       sx={{
         height: "130px",
@@ -64,7 +65,7 @@ export function SingleWordCard({ is_mastered, id, word, toggleWordState }) {
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
-        backgroundImage: `url(${cardBg})`,
+        // backgroundImage: `url(${cardBg})`,
         backgroundRepeat: "none",
         backgroundSize: "cover",
       }}
