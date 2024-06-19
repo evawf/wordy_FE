@@ -66,9 +66,9 @@ export default function Profile() {
       }}
     >
       <AccountCircleIcon sx={{ fontSize: 60, marginBottom: "10px" }} />
-      <Button variant="outlined" onClick={() => logoutUser()}>
+      {/* <Button variant="outlined" onClick={() => logoutUser()}>
         Logout
-      </Button>
+      </Button> */}
       <Divider sx={{ width: "100%", my: 2 }} />
 
       <Box
@@ -145,7 +145,7 @@ export default function Profile() {
         </Box>
       </Box>
       <Box sx={{ display: "flex", flexDirection: "row", width: "100%" }}>
-        <Button
+        {/* <Button
           variant="contained"
           fullWidth
           sx={{ mx: 1 }}
@@ -153,6 +153,15 @@ export default function Profile() {
           onClick={() => handleToggleUserStatus()}
         >
           {profile.isActive ? "Deactivate" : "Activate"}
+        </Button> */}
+        <Button
+          variant="contained"
+          fullWidth
+          sx={{ mx: 1 }}
+          color="secondary"
+          onClick={() => logoutUser()}
+        >
+          Logout
         </Button>
         <Button
           variant="contained"

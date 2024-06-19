@@ -146,12 +146,13 @@ export default function New() {
           sx={{
             marginTop: "200px",
             width: "80%",
-            paddingLeft: "20px",
+            paddingLeft: "25px",
             marginBottom: "80px",
             alignContent: "center",
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
+            alignItems: "center",
           }}
         >
           {isDataLoading ? <Loader /> : <></>}

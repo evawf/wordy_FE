@@ -37,15 +37,6 @@ export default function Dashboard() {
       <h2>Dashboard</h2>
       <Box sx={{ my: 2, textAlign: "center", width: "100%" }}>
         <WordChart />
-        {/* <Card sx={{ mt: 0.5, p: 2 }}>
-          <CardActionArea>
-            <CardContent>
-              <Typography variant="body2" color="text.secondary">
-                Combating the Curve of Forgeting
-              </Typography>
-            </CardContent>
-          </CardActionArea>
-        </Card> */}
       </Box>
       <BottomNav />
     </Box>

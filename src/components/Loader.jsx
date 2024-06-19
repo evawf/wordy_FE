@@ -6,6 +6,7 @@ export default function Loader() {
         position: "absolute",
         zIndex: "-1",
         top: "20%",
+        alignContent: "center",
       }}
     >
       <RotatingLines

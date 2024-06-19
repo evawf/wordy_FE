@@ -112,18 +112,26 @@ export default function WordChart() {
           alignItems: "center",
         }}
       >
-        <Card sx={{ width: "50%", height: "90px", mr: 0.25 }}>
+        <Card sx={{ width: "50%", height: "80px", mr: 0.25 }}>
           <CardContent>
             <h4 style={{ textAlign: "left" }}>Mastered</h4>
-            <h2 style={{ color: "green" }}>
+            <h2
+              style={{
+                color: "green",
+                textAlign: "right",
+                marginRight: "30px",
+              }}
+            >
               {masteredData.reduce((temp, a) => temp + a, 0)}
             </h2>
           </CardContent>
         </Card>
-        <Card sx={{ width: "50%", height: "90px", ml: 0.25 }}>
+        <Card sx={{ width: "50%", height: "80px", ml: 0.25 }}>
           <CardContent>
             <h4 style={{ textAlign: "left" }}>Total</h4>
-            <h2 style={{ color: "blue" }}>
+            <h2
+              style={{ color: "blue", textAlign: "right", marginRight: "30px" }}
+            >
               {wordData.reduce((temp, a) => temp + a, 0)}
             </h2>
           </CardContent>
