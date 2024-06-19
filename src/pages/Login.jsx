@@ -6,12 +6,14 @@ import LoginForm from "../components/LoginForm";
 import useGlobalUserContext from "../globalContext/UserContext";
 import { useState } from "react";
 import ShowMessage from "../components/ShowMessage";
+import Loader from "../components/Loader";
 
 export default function Login() {
   const navigate = useNavigate();
   const url = import.meta.env?.VITE_BACKEND_URL;
   const { updateUserName } = useGlobalUserContext();
   const [message, setMessage] = useState("");
+  const [userName, setUserName] = useState("");
 
   const openHomepage = () => {
     navigate("/");
@@ -33,6 +35,7 @@ export default function Login() {
           userId: userInfo?.userId,
         };
         localStorage.setItem("user", JSON.stringify(user));
+        setUserName(user.userName);
         navigate("/words");
       } else {
         setMessage(getUser.data.msg);
@@ -65,6 +68,7 @@ export default function Login() {
       </Box>
       <LoginForm onSubmit={loginUser} />
       {message && <ShowMessage message={message} />}
+      {userName ? <Loader /> : <></>}
     </Box>
   );
 }
