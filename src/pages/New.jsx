@@ -145,9 +145,8 @@ export default function New() {
         <Box
           sx={{
             marginTop: "200px",
-            width: "80%",
-            paddingLeft: "25px",
             marginBottom: "80px",
+            width: "100%",
             alignContent: "center",
             display: "flex",
             flexDirection: "column",

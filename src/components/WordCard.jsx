@@ -47,24 +47,31 @@ export function WordCard({
         >
           {word}
         </Box>
-        <Button
-          variant="text"
-          size="small"
-          onClick={() => {
-            setOpenEdit(true);
-          }}
-        >
-          <EditNoteIcon color="secondary" />
-        </Button>
-        <Button
-          size="small"
-          color="error"
-          variant="text"
-          sx={{ alignContent: "right" }}
-          onClick={() => deleteWord(id)}
-        >
-          <DeleteForeverIcon />
-        </Button>
+        <Box sx={{ display: "flex", flexDirection: "row" }}>
+          <Button
+            variant="text"
+            size="small"
+            onClick={() => {
+              setOpenEdit(true);
+            }}
+          >
+            <EditNoteIcon color="secondary" />
+          </Button>
+          <Button
+            size="small"
+            color="error"
+            variant="text"
+            sx={{
+              alignContent: "right",
+              margin: 0,
+              padding: 0,
+              minWidth: "24px",
+            }}
+            onClick={() => deleteWord(id)}
+          >
+            <DeleteForeverIcon sx={{ margin: 0, padding: 0 }} />
+          </Button>
+        </Box>
       </li>
     </>
   );
