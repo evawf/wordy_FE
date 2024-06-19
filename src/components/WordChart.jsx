@@ -6,6 +6,8 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
 
 export default function WordChart() {
   const url = import.meta.env.VITE_BACKEND_URL;
@@ -102,30 +104,62 @@ export default function WordChart() {
 
   return (
     <Box sx={{}}>
-      <Box sx={{ minWidth: 120, my: 2 }}>
-        <FormControl fullWidth>
-          <InputLabel id="demo-simple-select-label">Months</InputLabel>
-          <Select
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
-            value={selectedMonth}
-            label="Age"
-            onChange={handleChange}
-            sx={{ height: "40px" }}
-          >
-            <MenuItem value={6}>6 months</MenuItem>
-            <MenuItem value={12}>1 year</MenuItem>
-            <MenuItem value={24}>2 years</MenuItem>
-            <MenuItem value={60}>5 years</MenuItem>
-            <MenuItem value={120}>10 years</MenuItem>
-          </Select>
-        </FormControl>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Card sx={{ width: "50%", height: "90px", mr: 0.25 }}>
+          <CardContent>
+            <h4 style={{ textAlign: "left" }}>Mastered</h4>
+            <h2 style={{ color: "green" }}>
+              {masteredData.reduce((temp, a) => temp + a, 0)}
+            </h2>
+          </CardContent>
+        </Card>
+        <Card sx={{ width: "50%", height: "90px", ml: 0.25 }}>
+          <CardContent>
+            <h4 style={{ textAlign: "left" }}>Total</h4>
+            <h2 style={{ color: "blue" }}>
+              {wordData.reduce((temp, a) => temp + a, 0)}
+            </h2>
+          </CardContent>
+        </Card>
       </Box>
-      <ReactECharts
-        option={option}
-        style={{ height: "350px", width: "100%" }}
-        onEvents={onEvents}
-      />
+      <Card sx={{ mt: 0.5 }}>
+        <CardContent sx={{ m: 2 }}>
+          <FormControl fullWidth>
+            <InputLabel id="demo-simple-select-label">Months</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={selectedMonth}
+              label="Months"
+              onChange={handleChange}
+              sx={{ height: "40px" }}
+            >
+              <MenuItem value={6}>6 months</MenuItem>
+              <MenuItem value={12}>1 year</MenuItem>
+              <MenuItem value={24}>2 years</MenuItem>
+              <MenuItem value={60}>5 years</MenuItem>
+              <MenuItem value={120}>10 years</MenuItem>
+            </Select>
+          </FormControl>
+        </CardContent>
+        <CardContent>
+          <ReactECharts
+            option={option}
+            style={{
+              height: "350px",
+              width: "100%",
+            }}
+            onEvents={onEvents}
+          />
+        </CardContent>
+      </Card>
     </Box>
   );
 }

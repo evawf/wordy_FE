@@ -148,6 +148,10 @@ export default function New() {
             width: "80%",
             paddingLeft: "20px",
             marginBottom: "80px",
+            alignContent: "center",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
           }}
         >
           {isDataLoading ? <Loader /> : <></>}

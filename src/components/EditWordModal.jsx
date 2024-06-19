@@ -12,8 +12,6 @@ export default function EditWordModal({ id, word, openEdit, setOpenEdit }) {
   const [udpatedWord, setUpdatedWord] = useState("");
   const url = import.meta.env.VITE_BACKEND_URL;
 
-  console.log(id, word);
-
   function handleChange(e) {
     setUpdatedWord(e.target.value);
   }
@@ -23,7 +21,6 @@ export default function EditWordModal({ id, word, openEdit, setOpenEdit }) {
       const updateWord = await axios.put(`${url}/word/${id}/edit`, {
         word: udpatedWord,
       });
-      // alert("word updated!");
     } catch (err) {
       console.log("msg: ", err);
     }
