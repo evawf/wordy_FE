@@ -11,7 +11,7 @@ export function WordList({ wordList, toggleWordState, deleteWord }) {
       }}
     >
       {wordList.length === 0 && (
-        <Button variant="text" fullWidth sx={{ marginLeft: "-12.5px" }}>
+        <Button variant="text" fullWidth>
           You haven't added any word yet.
         </Button>
       )}
