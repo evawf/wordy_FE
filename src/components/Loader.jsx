@@ -4,8 +4,8 @@ export default function Loader() {
     <div
       style={{
         position: "absolute",
-        zIndex: "-1",
-        top: "20%",
+        zIndex: "1",
+        top: "22%",
         alignContent: "center",
       }}
     >
