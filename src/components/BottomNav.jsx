@@ -18,7 +18,7 @@ export default function BottomNav() {
     <Box
       sx={{
         width: "100%",
-        height: "70px",
+        height: "60px",
         display: "flex",
         flexDirection: "row",
         justifyContent: "space-between",
@@ -28,7 +28,6 @@ export default function BottomNav() {
         backgroundColor: "lightGray",
         paddingLeft: "35px",
         paddingRight: "35px",
-        paddingBottom: "10px",
       }}
     >
       <Link
