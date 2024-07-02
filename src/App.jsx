@@ -11,7 +11,7 @@ import Profile from "./pages/Profile";
 
 export default function App() {
   const [width, setWidth] = useState(window.innerWidth);
-  const breakpoint = 620;
+  const breakpoint = 2620;
   axios.defaults.withCredentials = true;
 
   useEffect(() => {

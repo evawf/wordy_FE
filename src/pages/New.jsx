@@ -7,6 +7,7 @@ import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
 import Loader from "../components/Loader";
 import { useNavigate } from "react-router-dom";
+import Client from "../util";
 
 export default function New() {
   // const [wordList, setWordList] = useState(() => {
@@ -46,7 +47,7 @@ export default function New() {
     try {
       setIsDataLoading(true);
 
-      const addNewWord = await axios.post(`${url}/new`, {
+      const addNewWord = await Client.post(`/new`, {
         newWord: newWord.trim(),
       });
 
@@ -64,6 +65,9 @@ export default function New() {
       setIsDataLoading(false);
     } catch (err) {
       console.log("msg: ", err);
+      console.log(err.response.status);
+      setIsDataLoading(false);
+      alert("There was an error procesing your word, retry later");
     }
   }
 
