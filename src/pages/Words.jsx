@@ -21,9 +21,15 @@ export default function Words() {
     } else {
       setIsDataLoading(true);
       async function getRandomWords() {
-        const getWords = await axios.get(`${url}/words`);
-        setWords(getWords.data.words);
-        setIsDataLoading(false);
+        try {
+          const getWords = await axios.get(`${url}/words`);
+          setWords(getWords.data.words);
+          setIsDataLoading(false);
+        } catch (err) {
+          console.log("msg: ", err);
+          alert("Something went wrong!");
+          navigate("/");
+        }
       }
       getRandomWords();
     }
@@ -45,6 +51,7 @@ export default function Words() {
       });
     } catch (err) {
       console.log("msg: ", err);
+      alert("Something went wrong!");
     }
   }
 
@@ -57,6 +64,7 @@ export default function Words() {
       const deleteWord = await axios.delete(`${url}/word/${id}/delete`);
     } catch (err) {
       console.log("msg: ", err);
+      alert("Something went wrong!");
     }
   }
 

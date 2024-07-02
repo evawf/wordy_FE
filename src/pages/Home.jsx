@@ -50,6 +50,8 @@ export default function Home() {
           }
         } catch (err) {
           console.log(err);
+          alert("Something went wrong!");
+          navigate("/");
         }
       }
 

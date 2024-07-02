@@ -8,6 +8,7 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
+import { useNavigate } from "react-router-dom";
 
 export default function WordChart() {
   const url = import.meta.env.VITE_BACKEND_URL;
@@ -16,8 +17,8 @@ export default function WordChart() {
   const [masteredData, setMasteredData] = useState([]);
   const [month, setMonth] = useState([]);
   const [pointerIdx, setPointerIdx] = useState(0);
-
   const [selectedMonth, setSelectedMonth] = useState("6");
+  const navigate = useNavigate();
 
   const handleChange = (event) => {
     setSelectedMonth(event.target.value);
@@ -33,6 +34,7 @@ export default function WordChart() {
         setMasteredData(data.arrOfMastered);
       } catch (err) {
         console.log("msg: ", err);
+        navigate("/");
       }
     }
 

@@ -22,6 +22,7 @@ export default function New() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    console.log(currentUser);
     if (!currentUser) {
       navigate("/login");
     } else {
@@ -35,6 +36,7 @@ export default function New() {
           }
         } catch (err) {
           console.log("msg: ", err);
+          navigate("/");
         }
       }
 
@@ -47,7 +49,7 @@ export default function New() {
     try {
       setIsDataLoading(true);
 
-      const addNewWord = await Client.post(`/new`, {
+      const addNewWord = await axios.post(`${url}/new`, {
         newWord: newWord.trim(),
       });
 
@@ -87,6 +89,7 @@ export default function New() {
       });
     } catch (err) {
       console.log("msg: ", err);
+      alert("Something went wrong!");
     }
   }
 
@@ -99,6 +102,7 @@ export default function New() {
       const deleteWord = await axios.delete(`${url}/word/${id}/delete`);
     } catch (err) {
       console.log("msg: ", err);
+      alert("Something went wrong!");
     }
   }
 
