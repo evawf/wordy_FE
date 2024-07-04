@@ -28,6 +28,7 @@ export default function Words() {
         } catch (err) {
           console.log("msg: ", err);
           alert("Something went wrong!");
+          localStorage.clear();
           navigate("/");
         }
       }

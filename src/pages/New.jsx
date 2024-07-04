@@ -22,7 +22,6 @@ export default function New() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log(currentUser);
     if (!currentUser) {
       navigate("/login");
     } else {
@@ -36,6 +35,8 @@ export default function New() {
           }
         } catch (err) {
           console.log("msg: ", err);
+          localStorage.clear();
+
           navigate("/");
         }
       }
